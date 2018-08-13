@@ -1,0 +1,30 @@
+{
+  "name": "homebridge-tuya",
+  "version": "0.1.0",
+  "description": "A Homebridge plugin for Tuya devices",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "tuya",
+    "iot",
+    "outlet",
+    "homebridge"
+  ],
+  "author": "Max Isom <codetheweb@icloud.com> (https://maxisom.me)",
+  "license": "MIT",
+  "dependencies": {
+    "tuyapi": "^3.0.1"
+  },
+  "engines": {
+    "homebridge": ">=0.2.0"
+  },
+  "devDependencies": {
+    "xo": "^0.22.0"
+  },
+  "xo": {
+          "space": true
+      }
+}
