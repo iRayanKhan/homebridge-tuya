@@ -1,3 +1,6 @@
+# Dev script to start Homebridge
+startHomebridge.sh
+
 # Logs
 logs
 *.log
