@@ -1,4 +1,4 @@
-# @tuyapi/homebridge
+# @tuyapi/homebridge-plugin
 🏠 Offical Homebridge plugin for [TuyAPI](https://github.com/codetheweb/tuyapi).
 
 ## Installation
