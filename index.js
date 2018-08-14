@@ -11,7 +11,7 @@ class TuyaPlatform {
     this.homebridgeAccessories = new Map();
 
     // Create instance of TuyaDiscover
-    this.discovery = new TuyaDiscover(this.config.devices);
+    this.discovery = new TuyaDiscover(this.log, this.config.devices);
 
     // Start discovery process after Homebridge's finished launching
     this.api.on('didFinishLaunching', () => {
