@@ -1,5 +1,5 @@
 {
-  "name": "@tuyapi/homebridge-plugin",
+  "name": "homebridge-tuya",
   "version": "0.1.2",
   "description": "A Homebridge plugin for Tuya devices",
   "main": "index.js",
@@ -26,5 +26,16 @@
   },
   "xo": {
     "space": true
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codetheweb/homebridge-tuya.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codetheweb/homebridge-tuya/issues"
+  },
+  "homepage": "https://github.com/codetheweb/homebridge-tuya#readme"
 }

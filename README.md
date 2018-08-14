@@ -1,10 +1,10 @@
-# @tuyapi/homebridge-plugin
+# homebridge-tuya
 🏠 Offical Homebridge plugin for [TuyAPI](https://github.com/codetheweb/tuyapi).
 
 ## Installation
 
 ```
-npm i @tuyapi/homebridge -g
+npm i homebridge-tuya -g
 ```
 
 ## Example config.json
