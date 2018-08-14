@@ -1,5 +1,5 @@
 {
-  "name": "homebridge-tuya",
+  "name": "@tuyapi/homebridge",
   "version": "0.1.0",
   "description": "A Homebridge plugin for Tuya devices",
   "main": "index.js",
