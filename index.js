@@ -32,7 +32,7 @@ class TuyaPlatform {
     this.discovery.on('device-offline', device => {
       this.log.info('Device Offline: %s', device.id);
 
-      const uuid = this.api.hap.uuid.generate(device.id);
+      const uuid = this.api.hap.uuid.generate(device.id + device.name);
       this.removeAccessory(this.homebridgeAccessories.get(uuid));
     });
   }
@@ -54,7 +54,7 @@ class TuyaPlatform {
     this.log.info('Adding: %s', device.id);
 
     // Get UUID
-    const uuid = this.api.hap.uuid.generate(device.id);
+    const uuid = this.api.hap.uuid.generate(device.id + device.name);
     const homebridgeAccessory = this.homebridgeAccessories.get(uuid);
 
     // Construct new generic accessory
