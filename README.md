@@ -30,6 +30,8 @@ npm i homebridge-tuya -g
 
 See [this page](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) for finding the above parameters.
 
+When using parameters from captured requests/responses, seek for `devId` or `uuid` for `id` field, and `localKey` for `key` field.
+
 If you find that the built-in IP auto discovery doesn't work for your network setup, you can pass it in manually like so:
 ```javascript
 {
