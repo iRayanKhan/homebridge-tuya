@@ -49,6 +49,7 @@ class TuyaPlatform {
   configureAccessory(accessory) {
     let hit = this.cache[accessory.context.deviceId];
     if (!hit) {
+      this.cache[accessory.context.deviceId] = true;
       this.log.info(
         'Configuring cached accessory: [%s] %s %s',
         accessory.displayName,
@@ -63,6 +64,7 @@ class TuyaPlatform {
   addAccessory(device) {
     let hit = this.cache[device.id];
     if (!hit) {
+      this.cache[device.id] = true;
       const deviceType = device.type || 'generic';
       this.log.info('Adding: %s (%s / %s)', device.name || 'unnamed', deviceType, device.id);
 
