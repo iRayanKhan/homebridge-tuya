@@ -61,7 +61,7 @@ class TuyaPlatform {
   }
 
   addAccessory(device) {
-    let hit = this.cache[accessory.context.deviceId];
+    let hit = this.cache[device.id];
     if (!hit) {
       const deviceType = device.type || 'generic';
       this.log.info('Adding: %s (%s / %s)', device.name || 'unnamed', deviceType, device.id);
