@@ -25,13 +25,13 @@ class TuyaPlatform {
 
     // When a new device is found, add it to Homebridge
     this.discovery.on('device-new', (device) => {
-      this.log.info('New Device Online: %s', device.id);
+      this.log.info('New Device Online: %s (%s)', device.name || 'unnamed', device.id);
       this.addAccessory(device);
     });
 
     // If a device is unreachable, remove it from Homebridge
     this.discovery.on('device-offline', (device) => {
-      this.log.info('Device Offline: %s', device.id);
+      this.log.info('Device Offline: %s (%s)', device.name || 'unnamed', device.id);
 
       const uuid = this.api.hap.uuid.generate(device.id + device.name);
       this.removeAccessory(this.homebridgeAccessories.get(uuid));
@@ -57,7 +57,7 @@ class TuyaPlatform {
   }
 
   addAccessory(device) {
-    this.log.info('Adding: %s', device.id);
+    this.log.info('Adding: %s (%s)', device.name || 'unnamed', device.id);
 
     // Get UUID
     const uuid = this.api.hap.uuid.generate(device.id + device.name);
@@ -77,6 +77,7 @@ class TuyaPlatform {
     }
 
     // Add to global map
+    this.log.info('Adding: %s (%s / %s)', device.name || 'unnamed', deviceType, device.id);
     this.homebridgeAccessories.set(uuid, deviceAccessory.homebridgeAccessory);
   }
 
