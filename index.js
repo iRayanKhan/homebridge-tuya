@@ -7,7 +7,6 @@ class TuyaPlatform {
     this.log = log;
     this.config = config || {};
     this.api = api;
-    this.cache = {};
 
     // Keep track of all registered accessories
     this.homebridgeAccessories = new Map();
@@ -47,46 +46,43 @@ class TuyaPlatform {
 
   // Function invoked when homebridge tries to restore cached accessory
   configureAccessory(accessory) {
-    let hit = this.cache[accessory.context.deviceId];
-    if (!hit) {
-      this.cache[accessory.context.deviceId] = true;
-      this.log.info(
-        'Configuring cached accessory: [%s] %s %s',
-        accessory.displayName,
-        accessory.context.deviceId,
-        accessory.UUID
-      );
-      this.log.debug('%j', accessory);
-      this.homebridgeAccessories.set(accessory.UUID, accessory);
+    let device = this.config.devices.find((d) => d.deviceId === accessory.context.deviceId);
+    if (device) {
+      this.addAccessory(match, accessory.UUID);
     }
+
+    this.log.info(
+      'Configuring cached accessory: [%s] %s %s',
+      accessory.displayName,
+      accessory.context.deviceId,
+      accessory.UUID
+    );
+    this.log.debug('%j', accessory);
+    this.homebridgeAccessories.set(accessory.UUID, accessory);
   }
 
-  addAccessory(device) {
-    let hit = this.cache[device.id];
-    if (!hit) {
-      this.cache[device.id] = true;
-      const deviceType = device.type || 'generic';
-      this.log.info('Adding: %s (%s / %s)', device.name || 'unnamed', deviceType, device.id);
+  addAccessory(device, knownId) {
+    const deviceType = device.type || 'generic';
+    this.log.info('Adding: %s (%s / %s)', device.name || 'unnamed', deviceType, device.id);
 
-      // Get UUID
-      const uuid = this.api.hap.uuid.generate(device.id + device.name);
-      const homebridgeAccessory = this.homebridgeAccessories.get(uuid);
+    // Get UUID
+    const uuid = knownId || this.api.hap.uuid.generate(device.id + device.name);
+    const homebridgeAccessory = this.homebridgeAccessories.get(uuid);
 
-      // Construct new accessory
-      let deviceAccessory;
-      switch (deviceType) {
-        case 'dimmer':
-          deviceAccessory = new DimmerAccessory(this, homebridgeAccessory, device);
-          break;
-        case 'generic':
-        default:
-          deviceAccessory = new GenericAccessory(this, homebridgeAccessory, device);
-          break;
-      }
-
-      // Add to global map
-      this.homebridgeAccessories.set(uuid, deviceAccessory.homebridgeAccessory);
+    // Construct new accessory
+    let deviceAccessory;
+    switch (deviceType) {
+      case 'dimmer':
+        deviceAccessory = new DimmerAccessory(this, homebridgeAccessory, device);
+        break;
+      case 'generic':
+      default:
+        deviceAccessory = new GenericAccessory(this, homebridgeAccessory, device);
+        break;
     }
+
+    // Add to global map
+    this.homebridgeAccessories.set(uuid, deviceAccessory.homebridgeAccessory);
   }
 
   removeAccessory(homebridgeAccessory) {
