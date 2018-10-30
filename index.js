@@ -50,15 +50,6 @@ class TuyaPlatform {
     if (device) {
       this.addAccessory(match, accessory.UUID);
     }
-
-    this.log.info(
-      'Configuring cached accessory: [%s] %s %s',
-      accessory.displayName,
-      accessory.context.deviceId,
-      accessory.UUID
-    );
-    this.log.debug('%j', accessory);
-    this.homebridgeAccessories.set(accessory.UUID, accessory);
   }
 
   addAccessory(device, knownId) {
