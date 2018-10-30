@@ -98,6 +98,10 @@ class TuyaPlatform {
       }
 
       // Add to global map
+      if (this.homebridgeAccessories.has(uuid)) {
+        this.homebridgeAccessories.delete(uuid);
+      }
+
       this.homebridgeAccessories.set(uuid, deviceAccessory.homebridgeAccessory);
     } catch (e) {
       this.log.error(e);
