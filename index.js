@@ -54,7 +54,7 @@ class TuyaPlatform {
     );
     this.log.debug('%j', accessory);
 
-    const device = this.config.devices.find((d) => d.deviceId === accessory.context.deviceId) || {};
+    const device = this.config.devices.find((d) => d.id === accessory.context.deviceId) || {};
     const deviceType = device.type || 'generic';
 
     // Construct new accessory
