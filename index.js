@@ -46,10 +46,30 @@ class TuyaPlatform {
 
   // Function invoked when homebridge tries to restore cached accessory
   configureAccessory(accessory) {
-    let device = this.config.devices.find((d) => d.deviceId === accessory.context.deviceId);
-    if (device) {
-      this.addAccessory(match, accessory.UUID);
+    this.log.info(
+      'Configuring cached accessory: [%s] %s %s',
+      accessory.displayName,
+      accessory.context.deviceId,
+      accessory.UUID
+    );
+    this.log.debug('%j', accessory);
+
+    const device = this.config.devices.find((d) => d.deviceId === accessory.context.deviceId) || {};
+    const deviceType = device.type || 'generic';
+
+    // Construct new accessory
+    let deviceAccessory;
+    switch (deviceType) {
+      case 'dimmer':
+        deviceAccessory = new DimmerAccessory(this, accessory, device);
+        break;
+      case 'generic':
+      default:
+        deviceAccessory = new GenericAccessory(this, accessory, device);
+        break;
     }
+
+    this.homebridgeAccessories.set(accessory.UUID, deviceAccessory.homebridgeAccessory);
   }
 
   addAccessory(device, knownId) {
