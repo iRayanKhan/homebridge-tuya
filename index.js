@@ -57,19 +57,23 @@ class TuyaPlatform {
     const device = this.config.devices.find((d) => d.id === accessory.context.deviceId) || {};
     const deviceType = device.type || 'generic';
 
-    // Construct new accessory
-    let deviceAccessory;
-    switch (deviceType) {
-      case 'dimmer':
-        deviceAccessory = new DimmerAccessory(this, accessory, device);
-        break;
-      case 'generic':
-      default:
-        deviceAccessory = new GenericAccessory(this, accessory, device);
-        break;
-    }
+    try {
+      // Construct new accessory
+      let deviceAccessory;
+      switch (deviceType) {
+        case 'dimmer':
+          deviceAccessory = new DimmerAccessory(this, accessory, device);
+          break;
+        case 'generic':
+        default:
+          deviceAccessory = new GenericAccessory(this, accessory, device);
+          break;
+      }
 
-    this.homebridgeAccessories.set(accessory.UUID, deviceAccessory.homebridgeAccessory);
+      this.homebridgeAccessories.set(accessory.UUID, deviceAccessory.homebridgeAccessory);
+    } catch (e) {
+      this.log.error(e);
+    }
   }
 
   addAccessory(device, knownId) {
@@ -80,20 +84,24 @@ class TuyaPlatform {
     const uuid = knownId || this.api.hap.uuid.generate(device.id + device.name);
     const homebridgeAccessory = this.homebridgeAccessories.get(uuid);
 
-    // Construct new accessory
-    let deviceAccessory;
-    switch (deviceType) {
-      case 'dimmer':
-        deviceAccessory = new DimmerAccessory(this, homebridgeAccessory, device);
-        break;
-      case 'generic':
-      default:
-        deviceAccessory = new GenericAccessory(this, homebridgeAccessory, device);
-        break;
-    }
+    try {
+      // Construct new accessory
+      let deviceAccessory;
+      switch (deviceType) {
+        case 'dimmer':
+          deviceAccessory = new DimmerAccessory(this, homebridgeAccessory, device);
+          break;
+        case 'generic':
+        default:
+          deviceAccessory = new GenericAccessory(this, homebridgeAccessory, device);
+          break;
+      }
 
-    // Add to global map
-    this.homebridgeAccessories.set(uuid, deviceAccessory.homebridgeAccessory);
+      // Add to global map
+      this.homebridgeAccessories.set(uuid, deviceAccessory.homebridgeAccessory);
+    } catch (e) {
+      this.log.error(e);
+    }
   }
 
   removeAccessory(homebridgeAccessory) {
