@@ -52,28 +52,8 @@ class TuyaPlatform {
       accessory.context.deviceId,
       accessory.UUID
     );
-    this.log.debug('%j', accessory);
-
-    const device = this.config.devices.find((d) => d.id === accessory.context.deviceId) || {};
-    const deviceType = device.type || 'generic';
-
-    try {
-      // Construct new accessory
-      let deviceAccessory;
-      switch (deviceType) {
-        case 'dimmer':
-          deviceAccessory = new DimmerAccessory(this, accessory, device);
-          break;
-        case 'generic':
-        default:
-          deviceAccessory = new GenericAccessory(this, accessory, device);
-          break;
-      }
-
-      this.homebridgeAccessories.set(accessory.UUID, deviceAccessory.homebridgeAccessory);
-    } catch (e) {
-      this.log.error(e);
-    }
+    this.log.info('%j', accessory);
+    this.homebridgeAccessories.set(accessory.UUID, accessory);
   }
 
   addAccessory(device, knownId) {
@@ -84,28 +64,20 @@ class TuyaPlatform {
     const uuid = knownId || this.api.hap.uuid.generate(device.id + device.name);
     const homebridgeAccessory = this.homebridgeAccessories.get(uuid);
 
-    try {
-      // Construct new accessory
-      let deviceAccessory;
-      switch (deviceType) {
-        case 'dimmer':
-          deviceAccessory = new DimmerAccessory(this, homebridgeAccessory, device);
-          break;
-        case 'generic':
-        default:
-          deviceAccessory = new GenericAccessory(this, homebridgeAccessory, device);
-          break;
-      }
-
-      // Add to global map
-      if (this.homebridgeAccessories.has(uuid)) {
-        this.homebridgeAccessories.delete(uuid);
-      }
-
-      this.homebridgeAccessories.set(uuid, deviceAccessory.homebridgeAccessory);
-    } catch (e) {
-      this.log.error(e);
+    // Construct new accessory
+    let deviceAccessory;
+    switch (deviceType) {
+      case 'dimmer':
+        deviceAccessory = new DimmerAccessory(this, homebridgeAccessory, device);
+        break;
+      case 'generic':
+      default:
+        deviceAccessory = new GenericAccessory(this, homebridgeAccessory, device);
+        break;
     }
+
+    // Add to global map
+    this.homebridgeAccessories.set(uuid, deviceAccessory.homebridgeAccessory);
   }
 
   removeAccessory(homebridgeAccessory) {
