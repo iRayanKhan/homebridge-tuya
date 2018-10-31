@@ -52,7 +52,7 @@ class TuyaPlatform {
       accessory.context.deviceId,
       accessory.UUID
     );
-    this.log.info('%j', accessory);
+    this.log.debug('%j', accessory);
     this.homebridgeAccessories.set(accessory.UUID, accessory);
   }
 
