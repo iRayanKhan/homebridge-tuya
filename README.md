@@ -1,4 +1,5 @@
 # homebridge-tuya
+
 🏠 Offical Homebridge plugin for [TuyAPI](https://github.com/codetheweb/tuyapi).
 
 ## Installation
@@ -7,7 +8,7 @@
 npm i homebridge-tuya -g
 ```
 
-## Example config.json
+## Basic config.json
 
 ```javascript
 {
@@ -15,24 +16,31 @@ npm i homebridge-tuya -g
   "name": "TuyaPlatform",
   "devices": [
     {
-      "name": "Tuya Device 1",
+      "name": "Tuya Outlet Device 1",
       "id": "xxxxxxxxxxxxxxxxxxxx",
       "key": "xxxxxxxxxxxxxxxx"
     },
     {
-      "name": "Tuya Device 2",
+      "name": "Tuya Dimmer Switch Device 2",
       "id": "xxxxxxxxxxxxxxxxxxxx",
-      "key": "xxxxxxxxxxxxxxxx"
+      "key": "xxxxxxxxxxxxxxxx",
+      "type": "dimmer"
     }
   ]
 }
 ```
 
-See [this page](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) for finding the above parameters.
+Currently supported types (`type` field):
+- `generic`: a device that has a single, boolean property (such as outlets, light switches, etc). Can be used in combination with the `dps` option to set a custom property.
+- `dimmer`: light switches with dimmers
 
-When using parameters from captured requests/responses, seek for `devId` or `uuid` for `id` field, and `localKey` for `key` field.
+See [this guide](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) for finding the `id` and `key`.
+
+
+## Advanced
 
 If you find that the built-in IP auto discovery doesn't work for your network setup, you can pass it in manually like so:
+
 ```javascript
 {
   "name": "Tuya Device 1",
@@ -43,6 +51,7 @@ If you find that the built-in IP auto discovery doesn't work for your network se
 ```
 
 For devices with more than one switch (for example, powerstrips), a config would look like this:
+
 ```javascript
 "devices": [
   {
