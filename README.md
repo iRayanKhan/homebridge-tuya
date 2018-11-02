@@ -8,9 +8,7 @@
 npm i homebridge-tuya -g
 ```
 
-## Example config.json
-
-The `type` option can be used to indicate the device is a dimmer. It can be set to "dimmer" or "generic", if omitted it will default to generic.
+## Basic config.json
 
 ```javascript
 {
@@ -32,9 +30,14 @@ The `type` option can be used to indicate the device is a dimmer. It can be set 
 }
 ```
 
-See [this page](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) for finding the above parameters.
+Currently supported types (`type` field):
+- `generic`: a device that has a single, boolean property (such as outlets, light switches, etc). Can be used in combination with the `dps` option to set a custom property.
+- `dimmer`: light switches with dimmers
 
-When using parameters from captured requests/responses, seek for `devId` or `uuid` for `id` field, and `localKey` for `key` field.
+See [this guide](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) for finding the `id` and `key`.
+
+
+## Advanced
 
 If you find that the built-in IP auto discovery doesn't work for your network setup, you can pass it in manually like so:
 
