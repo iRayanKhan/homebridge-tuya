@@ -24,13 +24,13 @@ class TuyaPlatform {
     });
 
     // When a new device is found, add it to Homebridge
-    this.discovery.on('device-new', (device) => {
+    this.discovery.on('device-new', device => {
       this.log.info('New Device Online: %s (%s)', device.name || 'unnamed', device.id);
       this.addAccessory(device);
     });
 
     // If a device is unreachable, remove it from Homebridge
-    this.discovery.on('device-offline', (device) => {
+    this.discovery.on('device-offline', device => {
       this.log.info('Device Offline: %s (%s)', device.name || 'unnamed', device.id);
 
       const uuid = this.api.hap.uuid.generate(device.id + device.name);
@@ -89,11 +89,11 @@ class TuyaPlatform {
 
     this.homebridgeAccessories.delete(homebridgeAccessory.deviceId);
     this.api.unregisterPlatformAccessories('homebridge-tuya', 'TuyaPlatform', [
-      homebridgeAccessory,
+      homebridgeAccessory
     ]);
   }
 }
 
-module.exports = function(homebridge) {
+module.exports = function (homebridge) {
   homebridge.registerPlatform('homebridge-tuya', 'TuyaPlatform', TuyaPlatform, true);
 };
