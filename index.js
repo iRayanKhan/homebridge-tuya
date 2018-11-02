@@ -54,7 +54,7 @@ class TuyaPlatform {
     );
     const device = this.config.devices.find((d) => d.id === accessory.context.deviceId);
     if (device && device.type === 'dimmer') {
-      checkDimmerOptionsUpgrade();
+      checkDimmerOptionsUpgrade(device, this.log);
     }
     this.log.debug('%j', accessory);
     this.homebridgeAccessories.set(accessory.UUID, accessory);
