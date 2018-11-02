@@ -31,11 +31,12 @@ npm i homebridge-tuya -g
 ```
 
 Currently supported types (`type` field):
+
 - `generic`: a device that has a single, boolean property (such as outlets, light switches, etc). Can be used in combination with the `dps` option to set a custom property.
 - `dimmer`: light switches with dimmers
+  - `options` can be used to specify alternate `dps` for `OnOff` and `brightness`, and `minVal` and `maxVal` can be specified for `brightness`. _(see advanced config)_
 
 See [this guide](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) for finding the `id` and `key`.
-
 
 ## Advanced
 
@@ -65,6 +66,27 @@ For devices with more than one switch (for example, powerstrips), a config would
     "id": "same-power-strip-id",
     "key": "same-power-strip-key",
     "dps": 2
+  }
+]
+```
+
+For `dimmer` devices you can optionally control the `dpsOn` (on/off switch), `dpsBright` (dimmer control), and the `minVal` and `maxVal` for brightness.
+
+**Important**: The `minVal` and `maxVal` are raw values known to the target device and form the range that translates to a 0-100% scale in the Home App. Check the device specs before changing these.
+
+```javascript
+"devices": [
+  {
+    "name": "Tuya Dimmer Switch Device Advanced",
+    "id": "xxxxxxxxxxxxxxxxxxxx",
+    "key": "xxxxxxxxxxxxxxxx",
+    "type": "dimmer",
+    "options": {      // Any or all of 'options' can be omitted
+      "dpsOn": 2,     // Defaults to 1
+      "dpsBright": 3, // Defaults to 2
+      "minVal": 0,    // Defaults to 11
+      "maxVal": 100   // Defaults to 244
+    }
   }
 ]
 ```
