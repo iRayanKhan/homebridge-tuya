@@ -32,26 +32,22 @@ The `type` option can be used to indicate the device is a dimmer. It can be set 
 }
 ```
 
-Currently supported types (`type` field):
+Each `device` object passed to the `devices` array has these properties:
+- `name`: the name that should appear in HomeKit.
+- `id`: the ID of the device. See [this guide](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) for finding the `id` and `key`.
+- `key`: the key of the device. See above guide.
+- `ip`: IP of device. Usually not necessary, add it if you have issues.
+- `type`: the type of device. Currently supported device types:
+  - `generic`: default type. A device that has a single, boolean property (such as outlets, light switches, etc). Options (used in the `options` property):
+    - `dps`: property index to control.
+  - `dimmer`: a device that has an on/off value and a brightness value, such as light switches with dimmers and lightbulbs. Options (used in the `options` property):
+    - `dpsOn`: property index to use for on/off commands (defaults to 1).
+    - `dpsBright`: property index to use for brightness control (defaults to 2).
+    - `minVal`: minimum brightness value (defaults to 11).
+    - `maxVal`: maximum brightness value (defaults to 244).
 
-- `generic`: a device that has a single, boolean property (such as outlets, light switches, etc). Can be used in combination with the `dps` option to set a custom property.
-- `dimmer`: light switches with dimmers
-  - `options` can be used to specify alternate `dps` for `OnOff` and `brightness`, and `minVal` and `maxVal` can be specified for `brightness`. _(see advanced config)_
-
-See [this guide](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) for finding the `id` and `key`.
 
 ## Advanced
-
-If you find that the built-in IP auto discovery doesn't work for your network setup, you can pass it in manually like so:
-
-```javascript
-{
-  "name": "Tuya Device 1",
-  "id": "xxxxxxxxxxxxxxxxxxxx",
-  "key": "xxxxxxxxxxxxxxxx",
-  "ip": "xxx.xxx.xxx.xxx"
-}
-```
 
 For devices with more than one switch (for example, powerstrips), a config would look like this:
 
@@ -61,25 +57,27 @@ For devices with more than one switch (for example, powerstrips), a config would
     "name": "Power strip main",
     "id": "power-strip-id",
     "key": "power-strip-key",
-    "dps": 1
+    "options": {      
+      "dps": 1
+    }
   },
   {
     "name": "Power strip USB",
     "id": "same-power-strip-id",
     "key": "same-power-strip-key",
-    "dps": 2
+    "options": {      
+      "dps": 2
+    }
   }
 ]
 ```
 
-For `dimmer` devices you can optionally control the `dpsOn` (on/off switch), `dpsBright` (dimmer control), and the `minVal` and `maxVal` for brightness.
-
-**Important**: The `minVal` and `maxVal` are raw values known to the target device and form the range that translates to a 0-100% scale in the Home App. Check the device specs before changing these.
+Dimmer device example:
 
 ```javascript
 "devices": [
   {
-    "name": "Tuya Dimmer Switch Device Advanced",
+    "name": "Tuya Dimmer Switch Device",
     "id": "xxxxxxxxxxxxxxxxxxxx",
     "key": "xxxxxxxxxxxxxxxx",
     "type": "dimmer",
