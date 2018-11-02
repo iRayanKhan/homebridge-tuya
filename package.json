@@ -1,6 +1,6 @@
 {
   "name": "homebridge-tuya",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A Homebridge plugin for Tuya devices",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "author": "Max Isom <codetheweb@icloud.com> (https://maxisom.me)",
   "license": "MIT",
   "dependencies": {
-    "tuyapi": "^3.0.1"
+    "tuyapi": "^3.1.0"
   },
   "engines": {
     "homebridge": ">=0.2.0"
