@@ -46,6 +46,7 @@ Each `device` object passed to the `devices` array has these properties:
     - `minVal`: minimum brightness value (defaults to 11).
     - `maxVal`: maximum brightness value (defaults to 244).
 
+[Options for known devices](https://github.com/codetheweb/tuyapi/wiki/Device-Details).
 
 ## Advanced
 
