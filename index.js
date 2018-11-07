@@ -1,6 +1,8 @@
 const TuyaDiscover = require('./lib/discovery');
+
 const GenericAccessory = require('./lib/generic');
 const { DimmerAccessory, checkDimmerOptionsUpgrade } = require('./lib/dimmer');
+const CurtainAccessory = require('./lib/curtain');
 
 class TuyaPlatform {
   constructor(log, config, api) {
@@ -71,6 +73,9 @@ class TuyaPlatform {
     // Construct new accessory
     let deviceAccessory;
     switch (deviceType) {
+      case 'curtain':
+        deviceAccessory = new CurtainAccessory(this, homebridgeAccessory, device);
+        break;
       case 'dimmer':
         deviceAccessory = new DimmerAccessory(this, homebridgeAccessory, device);
         break;

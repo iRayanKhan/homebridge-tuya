@@ -10,8 +10,6 @@ npm i homebridge-tuya -g
 
 ## Basic config.json
 
-The `type` option can be used to indicate the device is a dimmer. It can be set to "dimmer" or "generic", if omitted it will default to generic.
-
 ```javascript
 {
   "platform": "TuyaPlatform",
