@@ -16,7 +16,7 @@
   "author": "Max Isom <codetheweb@icloud.com> (https://maxisom.me)",
   "license": "MIT",
   "dependencies": {
-    "tuyapi": "^3.1.0"
+    "tuyapi": "^3.1.4"
   },
   "engines": {
     "homebridge": ">=0.2.0"
