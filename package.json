@@ -1,6 +1,6 @@
 {
   "name": "homebridge-tuya",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A Homebridge plugin for Tuya devices",
   "main": "index.js",
   "scripts": {
