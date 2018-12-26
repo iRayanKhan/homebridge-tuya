@@ -31,18 +31,24 @@ npm i homebridge-tuya -g
 ```
 
 Each `device` object passed to the `devices` array has these properties:
+
 - `name`: the name that should appear in HomeKit.
 - `id`: the ID of the device. See [this guide](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) for finding the `id` and `key`.
 - `key`: the key of the device. See above guide.
 - `ip`: IP of device. Usually not necessary, add it if you have issues.
 - `type`: the type of device. Currently supported device types:
   - `generic`: default type. A device that has a single, boolean property (such as outlets, light switches, etc). Options (used in the `options` property):
-    - `dps`: property index to control.
+	  - `dps`: property index to control (defaults to 1).
   - `dimmer`: a device that has an on/off value and a brightness value, such as light switches with dimmers and lightbulbs. Options (used in the `options` property):
-    - `dpsOn`: property index to use for on/off commands (defaults to 1).
-    - `dpsBright`: property index to use for brightness control (defaults to 2).
-    - `minVal`: minimum brightness value (defaults to 11).
-    - `maxVal`: maximum brightness value (defaults to 244).
+	  - `dpsOn`: property index to use for on/off commands (defaults to 1).
+	  - `dpsBright`: property index to use for brightness control (defaults to 2).
+	  - `minVal`: minimum brightness value (defaults to 11).
+	  - `maxVal`: maximum brightness value (defaults to 244).
+  - `curtain`
+	  - `dps`: property index to control (defaults to 1).
+	  - `upValue`: value when curtains are up (defaults to 1).
+	  - `downValue`: value when curtains are down (defaults to 2).
+	  - `stopValue`: value when curtains are stopped somewhere between fully open and fully closed (defaults to 3).
 
 [Options for known devices](https://github.com/codetheweb/tuyapi/wiki/Device-Details).
 
