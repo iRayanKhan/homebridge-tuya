@@ -1,6 +1,6 @@
 const TuyaDiscover = require('./lib/discovery');
 const GenericAccessory = require('./lib/generic');
-const { DimmerAccessory, checkDimmerOptionsUpgrade } = require('./lib/dimmer');
+const {DimmerAccessory, checkDimmerOptionsUpgrade} = require('./lib/dimmer');
 const LightbulbAccessory = require('./lib/lightbulb');
 
 class TuyaPlatform {
@@ -53,7 +53,7 @@ class TuyaPlatform {
       accessory.context.deviceId,
       accessory.UUID
     );
-    const device = this.config.devices.find((d) => d.id === accessory.context.deviceId);
+    const device = this.config.devices.find(d => d.id === accessory.context.deviceId);
     if (device && device.type === 'dimmer') {
       checkDimmerOptionsUpgrade(device, this.log);
     }
