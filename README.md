@@ -49,6 +49,7 @@ Each `device` object passed to the `devices` array has these properties:
 	  - `upValue`: value when curtains are up (defaults to 1).
 	  - `downValue`: value when curtains are down (defaults to 2).
 	  - `stopValue`: value when curtains are stopped somewhere between fully open and fully closed (defaults to 3).
+    - `timeToOpen`: time, in seconds, it takes for your curtains/blinds to fully open from a fully closed state.
 
 [Options for known devices](https://github.com/codetheweb/tuyapi/wiki/Device-Details).
 

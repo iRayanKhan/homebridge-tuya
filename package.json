@@ -16,6 +16,7 @@
   "author": "Max Isom <codetheweb@icloud.com> (https://maxisom.me)",
   "license": "MIT",
   "dependencies": {
+    "range-map": "^1.0.4",
     "tuyapi": "^3.1.4"
   },
   "engines": {
