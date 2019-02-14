@@ -1,8 +1,9 @@
 const TuyaDiscover = require('./lib/discovery');
 
 const GenericAccessory = require('./lib/generic');
-const { DimmerAccessory, checkDimmerOptionsUpgrade } = require('./lib/dimmer');
+const {DimmerAccessory, checkDimmerOptionsUpgrade} = require('./lib/dimmer');
 const CurtainAccessory = require('./lib/curtain');
+const ThermostatAccessory = require('./lib/thermostat');
 
 class TuyaPlatform {
   constructor(log, config, api) {
@@ -54,7 +55,7 @@ class TuyaPlatform {
       accessory.context.deviceId,
       accessory.UUID
     );
-    const device = this.config.devices.find((d) => d.id === accessory.context.deviceId);
+    const device = this.config.devices.find(d => d.id === accessory.context.deviceId);
     if (device && device.type === 'dimmer') {
       checkDimmerOptionsUpgrade(device, this.log);
     }
@@ -78,6 +79,9 @@ class TuyaPlatform {
         break;
       case 'dimmer':
         deviceAccessory = new DimmerAccessory(this, homebridgeAccessory, device);
+        break;
+      case 'thermostat':
+        deviceAccessory = new ThermostatAccessory(this, homebridgeAccessory, device);
         break;
       case 'generic':
       default:
