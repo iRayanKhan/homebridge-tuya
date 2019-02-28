@@ -1,4 +1,4 @@
-** This plugin is now deprecated, as I don't have enough time to maintain it along with other TuyAPI related projects. Please use [AMoo-Miki](https://github.com/AMoo-Miki)'s [homebridge-tuya-lan](https://www.npmjs.com/package/homebridge-tuya-lan) plugin instead. **
+**This plugin is now deprecated, as I don't have enough time to maintain it along with other TuyAPI related projects. Please use [AMoo-Miki](https://github.com/AMoo-Miki)'s [homebridge-tuya-lan](https://www.npmjs.com/package/homebridge-tuya-lan) plugin instead.**
 
 # homebridge-tuya
 
