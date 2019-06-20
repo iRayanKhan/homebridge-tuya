@@ -38,6 +38,7 @@ Each `device` object passed to the `devices` array has these properties:
 - `id`: the ID of the device. See [this guide](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) for finding the `id` and `key`.
 - `key`: the key of the device. See above guide.
 - `ip`: IP of device. Usually not necessary, add it if you have issues.
+- `version`: the firmware version of the device, add it if you have issues.
 - `type`: the type of device. Currently supported device types:
   - `generic`: default type. A device that has a single, boolean property (such as outlets, light switches, etc). Options (used in the `options` property):
 	  - `dps`: property index to control (defaults to 1).
