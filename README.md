@@ -89,12 +89,30 @@ Dimmer device example:
     "id": "xxxxxxxxxxxxxxxxxxxx",
     "key": "xxxxxxxxxxxxxxxx",
     "type": "dimmer",
-    "options": {      // Any or all of 'options' can be omitted
-      "dpsOn": 2,     // Defaults to 1
-      "dpsBright": 3, // Defaults to 2
-      "minVal": 0,    // Defaults to 11
-      "maxVal": 100   // Defaults to 244
+    "options": {           // Any or all of 'options' can be omitted
+      "dpsOn": 2,          // Defaults to 1
+      "dpsBright": 3,      // Defaults to 2
+      "dpsMinBright": 101, // Defaults to 3. With the Tuya app you can set the minimal brightness, HomeKit can not change this value.
+      "minVal": 0,         // Note: this is not a dps setting. Defaults to 11
+      "maxVal": 100        // Note: this is not a dps setting. Defaults to 244
     }
+  }
+]
+```
+
+For devices with new Tuya protocol version 3.3, you will need to explicitly specify the version with each device, otherwise the devices will only be discovered but can not parse the received data for the device.
+
+Protocol version 3.3 device example:
+
+```javascript
+"devices": [
+  {
+    {
+      "name": "Tuya Outlet Device 1",
+      "id": "xxxxxxxxxxxxxxxxxxxx",
+      "key": "xxxxxxxxxxxxxxxx",
+      "version": "3.3"
+    },
   }
 ]
 ```
