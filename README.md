@@ -1,4 +1,4 @@
-**Optimised to work with Tuya devices that have protcol version 3.3. Currently optimised and tested are Outlet and Dimmer**
+**This plugin is deprecated so I can spend my time on core TuyAPI work. Please use [homebridge-tuya-web](https://github.com/basdelfos/homebridge-tuya-web) insteead.**
 
 # homebridge-tuya
 
