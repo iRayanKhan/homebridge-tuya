@@ -1,4 +1,4 @@
-**This plugin is deprecated so I can spend my time on core TuyAPI work. Please use [homebridge-tuya-web](https://github.com/basdelfos/homebridge-tuya-web) insteead.**
+**This plugin is deprecated so I can spend my time on core TuyAPI work. Please use [homebridge-tuya-web](https://github.com/basdelfos/homebridge-tuya-web) instead.**
 
 # homebridge-tuya
 
