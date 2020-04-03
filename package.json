@@ -1,41 +1,43 @@
 {
   "name": "homebridge-tuya",
-  "version": "0.4.5",
-  "description": "A Homebridge plugin for Tuya devices",
+  "version": "1.1.1",
+  "description": "🏠 Offical Homebridge plugin for TuyAPI ",
   "main": "index.js",
   "scripts": {
-    "test": "xo"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "homebridge-plugin",
-    "tuya",
-    "iot",
-    "outlet",
-    "homebridge"
-  ],
-  "author": "Max Isom <codetheweb@icloud.com> (https://maxisom.me)",
-  "license": "MIT",
-  "dependencies": {
-    "tuyapi": "^5.1.1"
-  },
-  "engines": {
-    "homebridge": ">=0.2.0"
-  },
-  "devDependencies": {
-    "xo": "^0.24.0"
-  },
-  "xo": {
-    "space": true
-  },
-  "directories": {
-    "lib": "lib"
+  "bin": {
+    "tuya-lan": "./bin/cli.js",
+    "tuya-lan-find": "./bin/cli-find.js",
+    "tuya-lan-decode": "./bin/cli-decode.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codetheweb/homebridge-tuya.git"
+    "url": "git+https://github.com/iRayanKhan/homebridge-tuya.git"
   },
+  "author": "Rayan Khan",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codetheweb/homebridge-tuya/issues"
+    "url": "https://github.com/iRayanKhan/homebridge-tuya/issues"
   },
-  "homepage": "https://github.com/codetheweb/homebridge-tuya#readme"
+  "homepage": "https://github.com/iRayanKhan/homebridge-tuya#readme",
+  "dependencies": {
+    "async": "^3.1.0",
+    "commander": "^3.0.1",
+    "fs-extra": "^8.1.0",
+    "http-mitm-proxy": "^0.8.1",
+    "json5": "^2.1.0",
+    "qrcode": "^1.4.1",
+    "yaml": "^1.6.0"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "homebridge",
+    "homebridge-tuya",
+    "tuya"
+  ],
+  "engines": {
+    "homebridge": ">=0.4.0",
+    "node": ">=8.6.0"
+  }
 }
