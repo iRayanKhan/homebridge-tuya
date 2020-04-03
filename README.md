@@ -1,4 +1,7 @@
-**This plugin is deprecated so I can spend my time on core TuyAPI work. Please use [homebridge-tuya-web](https://github.com/basdelfos/homebridge-tuya-web) instead.**
+This plugin was deprecated, and is now being restored. This will take a few days as I tidy up the readme and code and also give proper credit.
+
+[![npm](https://badgen.net/npm/v/homebridge-tuya/latest)](https://www.npmjs.com/package/homebridge-tuya) 
+[![npm](https://badgen.net/npm/dt/homebridge-tuya)](https://www.npmjs.com/package/homebridge-tuya)
 
 # homebridge-tuya
 
