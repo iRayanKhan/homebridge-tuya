@@ -1,0 +1,462 @@
+  {
+    "pluginAlias": "TuyaLan",
+    "pluginType": "platform",
+    "singular": true,
+    "headerDisplay": "<p align='center'><img height='60px' src='https://user-images.githubusercontent.com/3979615/78354049-dc7ff780-75f6-11ea-8026-2f8bf81d8331.png'></p>\n\nBefore using the Tuya plugin you need to discover your devices by following [these instructions](https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Setup-Instructions).\n\n",
+    "footerDisplay": "",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "devices": {
+          "type": "array",
+          "orderable": false,
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "required": true,
+                "default": "null",
+                "oneOf": [
+                  {
+                    "title": "Please select device type...",
+                    "enum": [
+                      "null"
+                    ]
+                  },
+                  { 
+                    "title": "Smart Plug / Barely Smart Power Strip",
+                    "enum": [
+                      "Outlet"
+                      ]
+                  },
+                  {
+                    "title": "Simple Light Bulb / Socket",
+                    "enum": [
+                      "SimpleLight"
+                    ]
+                  },
+                  {
+                    "title": "Tunable White Light Bulb",
+                    "enum": [
+                      "TWLight"
+                    ]
+                  },
+                  {
+                    "title": "White and Color Light Bulb",
+                    "enum": [
+                      "RGBTWLight"
+                    ]
+                  },
+                  {
+                    "title": "Smart Power Strip",
+                    "enum": [
+                      "MultiOutlet"
+                    ]
+                  },
+                  {
+                    "title": "Non-sequential Power Strip",
+                    "enum": [
+                      "CustomMultiOutlet"
+                    ]
+                  },
+                  {
+                    "title": "Air Conditioner",
+                    "enum": [
+                      "AirConditioner"
+                    ]
+                  },
+                  {
+                    "title": "Heat Convector",
+                    "enum": [
+                      "Convector"
+                    ]
+                  },
+                  {
+                    "title": "Simple Dimmer",
+                    "enum": [
+                      "SimpleDimmer"
+                    ]
+                  },
+                  {
+                    "title": "Simple Heater",
+                    "enum": [
+                      "SimpleHeater"
+                    ]
+                  },
+                  {
+                    "title": "Garage Door",
+                    "enum": [
+                      "GarageDoor"
+                    ]
+                  },
+                  {
+                    "title": "Simple Blinds",
+                    "enum": [
+                      "SimpleBlinds"
+                    ]
+                  },
+                  {
+                    "title": "Simple Blinds2",
+                    "enum": [
+                      "Simple Blinds2"
+                    ]
+                  },
+                  {
+                    "title": "Smart Plug w/ White and Color Lights",
+                    "enum": [
+                      "RGBTWOutlet"
+                    ]
+                  }
+                ]
+              },
+              "name": {
+                "type": "string",
+                "description": "Anything you'd like to use to identify this device. You can always change the name from within the Home app later.",
+                "required": true,
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
+                }
+              },
+              "id": {
+                "type": "string",
+                "title": "Tuya ID", 
+                "description": "If you don't have the Tuya ID or Key, follow the steps found on the <a href='https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Setup-Instructions' target='_blank'>Setup Instructions</a> page.",
+                "required": true,
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
+                }
+              },
+              "key": {
+                "title": "Tuya Key",
+                "type": "string",
+                "required": true,
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
+                }
+              },
+              "manufacturer": {
+                "type": "string",
+                "description": "Anything you'd like to use to help identify this device.",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
+                }
+              },
+              "model": {
+                "type": "string",
+                "description": "Anything you'd like to use to help identify this device.",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
+                }
+              },
+              "voltsId": {
+                "type": "integer",
+                "placeholder": "9",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "ampsId": {
+                "type": "integer",
+                "placeholder": "8",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "wattsId": {
+                "type": "integer",
+                "placeholder": "7",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "voltsDivisor": {
+                "type": "integer",
+                "placeholder": "10",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "ampsDivisor": {
+                "type": "integer",
+                "placeholder": "1000",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "wattsDivisor": {
+                "type": "integer",
+                "placeholder": "10",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpPower": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'TWLight', 'RGBTWLight', 'SimpleDimmer','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpBrightness": {
+                "type": "integer",
+                "placeholder": "2",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'SimpleDimmer','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpColorTemperature": {
+                "type": "integer",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "minWhiteColor": {
+                "type": "integer",
+                "placeholder": "140",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "maxWhiteColor": {
+                "type": "integer",
+                "placeholder": "400",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpMode": {
+                "type": "integer",
+                "placeholder": "2",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpColor": {
+                "type": "integer",
+                "placeholder": "5",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "colorFunction": {
+                "type": "string",
+                "placeholder": "HEXHSB",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "scaleBrightness": {
+                "type": "integer",
+                "placeholder": "255",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "scaleWhiteColor": {
+                "type": "integer",
+                "placeholder": "255",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "outletCount": {
+                "type": "integer",
+                "placeholder": "5",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['MultiOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "outlets": {
+                "type": "array",
+                "orderable": false,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "dp": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['CustomMultiOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "noCool": {
+                "type": "boolean",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "noHeat": {
+                "type": "boolean",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "cmdCool": {
+                "type": "string",
+                "placeholder": "COOL",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "cmdHeat": {
+                "type": "string",
+                "placeholder": "HEAT",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "noSwing": {
+                "type": "boolean",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "minTemperature": {
+                "type": "integer",
+                "placeholder": "15",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner','Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "maxTemperature": {
+                "type": "integer",
+                "placeholder": "40",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner','Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "minTemperatureSteps": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpActive": {
+                "type": "integer",
+                "placeholder": "7",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpDesiredTemperature": {
+                "type": "integer",
+                "placeholder": "2",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpCurrentTemperature": {
+                "type": "integer",
+                "placeholder": "3",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpRotationSpeed": {
+                "type": "integer",
+                "placeholder": "4",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpChildLock": {
+                "type": "integer",
+                "placeholder": "6",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpTemperatureDisplayUnits": {
+                "type": "integer",
+                "placeholder": "19",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "cmdLow": {
+                "type": "string",
+                "placeholder": "Low",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "cmdHigh": {
+                "type": "string",
+                "placeholder": "High",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "noChildLock": {
+                "type": "boolean",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "noTemperatureUnit": {
+                "type": "boolean",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "temperatureDivisor": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpAction": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['GarageDoor'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpStatus": {
+                "type": "integer",
+                "placeholder": "2",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['GarageDoor'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "flipState": {
+                "type": "boolean",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['GarageDoor','SimpleBlinds'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "timeToOpen": {
+                "type": "integer",
+                "placeholder": "45",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "timeToTighten": {
+                "type": "integer",
+                "placeholder": "0",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpLight": {
+                "type": "integer",
+                "placeholder": 1,
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
