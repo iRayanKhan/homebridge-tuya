@@ -32,7 +32,7 @@ const emitter = new EventEmitter();
 program
     .name('tuya-lan find')
     .option('--ip <ip>', 'IP address to listen for requests')
-    .option('-p, --port <port>', 'port the proxy should listen on', 8080)
+    .option('-p, --port <port>', 'port the proxy should listen on', 8060)
     .option('--schema', 'include schema in the output')
     .parse(process.argv);
 
