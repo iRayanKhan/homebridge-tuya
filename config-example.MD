@@ -6,7 +6,7 @@
 
 
 ## Configurations
-The configuration parameters to enable your devices would need to be added to `platforms` section of the Homebridge configuration file. Examples of device configs can be found on the [Supported Devices](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types) page. Check out the [Common Problems](https://github.com/iRayanKhan/homebridge-tuya/wiki/Common-Problems) page for solutions or raise an issue if you face problems.
+The configuration parameters to enable your devices would need to be added to `platforms` section of the Homebridge configuration file. Examples of device configs can be found on the [Supported Device Types](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types) page. Check out the [Common Problems](https://github.com/iRayanKhan/homebridge-tuya/wiki/Common-Problems) page for solutions or raise an issue if you face problems.
 ```json5
 {
     ...
@@ -35,9 +35,9 @@ The configuration parameters to enable your devices would need to be added to `p
 ```
 #### Parameters
 * `name` (required) is anything you'd like to use to identify this device. You can always change the name from within the Home app.
-* `type` (required) is a case-insensitive identifier that lets the plugin know how to handle your device. Find your device `type` on the [Supported Devices](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Devices) page.
+* `type` (required) is a case-insensitive identifier that lets the plugin know how to handle your device. Find your device `type` on the [Supported Device Type List](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types) page.
 * `manufacturer` and `model` are anything you like; the purpose of them is to help you identify the device.
-* `id` (required) and `key` (required) are parameters for your device. If you don't have them, follow the steps found on the [Setup Instructions](https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Setup-Instructions) page.
-* `ip` needs to be added **_only_** if you face discovery issues. See [Common Problems](https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Common-Problems) for more details.   
+* `id` (required) and `key` (required) are parameters for your device. If you don't have them, follow the steps found on the [Setup Instructions](https://github.com/iRayanKgan/homebridge-tuya/wiki/Setup-Instructions) page.
+* `ip` needs to be added **_only_** if you face discovery issues. See [Common Problems](https://github.com/iRayanKhan/homebridge-tuya/wiki/Common-Problems) for more details.   
 
 > To find out which `id` belongs to which device, open the Tuya Smart app and check the `Device Information` by tapping the configuration icon of your devices; it is almost always a tiny icon on the top-right.
