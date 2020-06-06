@@ -2,7 +2,7 @@
 name: New Device
 about: Question regarding support for a new device.
 title: 'New Device: '
-labels: ''
+labels: 'newDevice'
 assignees: iRayanKhan
 
 ---
