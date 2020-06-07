@@ -19,8 +19,8 @@ const SimpleFanAccessory = require('./lib/SimpleFanAccessory');
 const SimpleFanLightAccessory = require('./lib/SimpleFanLightAccessory');
 const ValveAccessory = require('./lib/ValveAccessory');
 
-const PLUGIN_NAME = 'homebridge-tuya-lan';
-const PLATFORM_NAME = 'TuyaLan';
+const PLUGIN_NAME = 'homebridge-tuya';
+const PLATFORM_NAME = 'Tuya';
 
 const CLASS_DEF = {
     outlet: OutletAccessory,
@@ -50,10 +50,10 @@ module.exports = function(homebridge) {
         hap: {Characteristic, Service, Accessory: {Categories}, uuid: UUID}
     } = homebridge);
 
-    homebridge.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, TuyaLan, true);
+    homebridge.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, Tuya, true);
 };
 
-class TuyaLan {
+class Tuya {
     constructor(...props) {
         [this.log, this.config, this.api] = [...props];
 
