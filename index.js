@@ -252,13 +252,6 @@ class TuyaLan {
       isCached = false;
     }
 
-    this.log.info(
-        'DEBUG manufacturer (%s) device.context.name (%s) deviceConfig.name (%s) accessory.displayName (%s)',
-        accessory.getService(Service.AccessoryInformation)
-            .getCharacteristic(Characteristic.Manufacturer)
-            .value,
-        device.context.name, deviceConfig.name, accessory.displayName);
-
     if (accessory && accessory.displayName !== deviceConfig.name) {
       this.log.info(
           "Configuration name %s differs from cached displayName %s. Updating cached displayName to %s ",
@@ -268,17 +261,6 @@ class TuyaLan {
 
     this.cachedAccessories.set(
         deviceConfig.UUID, new Accessory(this, accessory, device, !isCached));
-
-    let updatedAccessory = this.cachedAccessories.get(deviceConfig.UUID);
-    if (updatedAccessory) {
-      if (accessory.displayName !== deviceConfig.name) {
-        this.log.info("DEBUG Updated accessory displayName is now %s ",
-                      accessory.displayName);
-      }
-    } else {
-      this.log.info("DEBUG Could not retrieve cachedAccessory with UUID %s ",
-                    deviceConfig.UUID);
-    }
   }
 
   removeAccessory(homebridgeAccessory) {
