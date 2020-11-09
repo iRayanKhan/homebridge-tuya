@@ -21,6 +21,7 @@ const SimpleFanAccessory = require('./lib/SimpleFanAccessory');
 const SimpleFanLightAccessory = require('./lib/SimpleFanLightAccessory');
 const ValveAccessory = require('./lib/ValveAccessory');
 const OilDiffuserAccessory = require('./lib/OilDiffuserAccessory');
+const EcoFanLightAccessory = require('./lib/EcoFanLightAccessory');
 
 const PLUGIN_NAME = 'homebridge-tuya-lan';
 const PLATFORM_NAME = 'TuyaLan';
@@ -45,7 +46,8 @@ const CLASS_DEF = {
     fan: SimpleFanAccessory,
     fanlight: SimpleFanLightAccessory,
     watervalve: ValveAccessory,
-    oildiffuser: OilDiffuserAccessory
+    oildiffuser: OilDiffuserAccessory,
+    ecofanlight: EcoFanLightAccessory
 };
 
 let Characteristic, PlatformAccessory, Service, Categories, UUID;
