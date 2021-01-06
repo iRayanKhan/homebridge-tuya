@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file. This project uses [semantic versioning](https://semver.org/).
 
 ## 1.2.0 (2021-01-05)
-* Fix UDP errors in log, thanks @biosim500 [#78]
+* Fix UDP errors in log, thanks @Giocirque [#78]
 
 
 * Merged fix for simpleFanLightAccessory DS-03 support, thanks @sholleman [#168]
