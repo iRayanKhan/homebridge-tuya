@@ -22,7 +22,7 @@ const SimpleFanLightAccessory = require('./lib/SimpleFanLightAccessory');
 const ValveAccessory = require('./lib/ValveAccessory');
 const OilDiffuserAccessory = require('./lib/OilDiffuserAccessory');
 
-const PLUGIN_NAME = 'homebridge-tuya-lan';
+const PLUGIN_NAME = 'homebridge-tuya';
 const PLATFORM_NAME = 'TuyaLan';
 
 const CLASS_DEF = {
