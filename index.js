@@ -48,12 +48,12 @@ const CLASS_DEF = {
     oildiffuser: OilDiffuserAccessory
 };
 
-let Characteristic, PlatformAccessory, Service, Categories, UUID;
+let Characteristic, PlatformAccessory, Service, Categories, AdaptiveLightingController, UUID;
 
 module.exports = function(homebridge) {
     ({
         platformAccessory: PlatformAccessory,
-        hap: {Characteristic, Service, Accessory: {Categories}, uuid: UUID}
+        hap: {Characteristic, Service, AdaptiveLightingController, Accessory: {Categories}, uuid: UUID}
     } = homebridge);
 
     homebridge.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, TuyaLan, true);
