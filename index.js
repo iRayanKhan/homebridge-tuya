@@ -214,6 +214,13 @@ class TuyaLan {
             isCached = false;
         }
 
+        if (accessory && accessory.displayName !== deviceConfig.name) {
+            this.log.info(
+                "Configuration name %s differs from cached displayName %s. Updating cached displayName to %s ",
+                deviceConfig.name, accessory.displayName, deviceConfig.name);
+            accessory.displayName = deviceConfig.name;
+        }
+
         this.cachedAccessories.set(deviceConfig.UUID, new Accessory(this, accessory, device, !isCached));
     }
 
