@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. This project uses [semantic versioning](https://semver.org/).
 
+## 1.5.0 (2021-02-28)
+This update includes the following changes:
+
+* Updated dependencies [#215](https://github.com/iRayanKhan/homebridge-tuya/pull/215) + [#216](https://github.com/iRayanKhan/homebridge-tuya/pull/216)
+* Removed plugin prefix from Manufacturer (may have to clear cachedAccessories)
+* Fix crash on launch for garage accessory "ReferenceError: dps is not defined" [#201](https://github.com/iRayanKhan/homebridge-tuya/pull/201) Thanks @longzheng
+* Added dpStatus configuration for Wofea garage door [#202](https://github.com/iRayanKhan/homebridge-tuya/pull/202) Thanks @longzheng
+* Allow more numbers and strings for cmdLow, and cmdHigh [#204](https://github.com/iRayanKhan/homebridge-tuya/pull/204) Thanks @fra-iesus
+* Note: If you have custom logic or support for an unsupported accessory, please open a PR so it can be merged in!
+* Note: Update to Homebridge v1.3.1 to fix "No Response" for TW/RGBTW Lights. 
+
 ## 1.4.0 (2021-02-14)
 Happy Valentines day!
 This update includes the following changes, courtesy of @davidh2075:
