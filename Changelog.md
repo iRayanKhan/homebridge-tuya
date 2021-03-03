@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. This project uses [semantic versioning](https://semver.org/).
 
+## 1.5.1 (2021-03-02)
+This update includes the following changes:
+
+* [+] Fix garage door accessory for Wofea devices, thanks @pelletip [#221](https://github.com/iRayanKhan/homebridge-tuya/pull/221)
+
+* [+] Fix log prefix for the following device types: BaseAccessory, RGBTWLight, SimpleBlinds(1), SimpleBlinds2, SimpleFanLight, SimpleHeater, SimpleLight, TuyaAccessory, and ValveAccessory.
+
+* [!] Warning: V2.0 will be released once this plugin is verified. The platform name will change from TuyaLan to just Tuya. Please be prepared once V2.0 comes out. No action is required at this time. 
+
 ## 1.5.0 (2021-02-28)
 This update includes the following changes:
 
