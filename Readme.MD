@@ -6,6 +6,7 @@
 
 <a href="https://www.npmjs.com/package/homebridge-tuya"><img title="npm version" src="https://badgen.net/npm/v/homebridge-tuya" ></a>
 <a href="https://www.npmjs.com/package/homebridge-tuya"><img title="npm downloads" src="https://badgen.net/npm/dt/homebridge-tuya" ></a>
+[![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
 
 </span>
 
