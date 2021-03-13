@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. This project uses [semantic versioning](https://semver.org/).
 
+## 2.0.0 (2021-03-12)
+This update includes the following changes:
+
+* [+] Verified by Homebridge. [#264](https://github.com/homebridge/verified/issues/264)
+
+
 ## 1.5.1 (2021-03-02)
 This update includes the following changes:
 
