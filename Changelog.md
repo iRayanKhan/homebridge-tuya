@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file. This projec
 This update includes the following changes:
 
 * [+] Verified by Homebridge. [#264](https://github.com/homebridge/verified/issues/264)
+* [!] Note: The next release of this plugin (2.1.0) will change the config to "Tuya", instead of "TuyaLan". No change is needed 'till 2.1.0 is released.
 
 
 ## 1.5.1 (2021-03-02)
