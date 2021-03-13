@@ -1,6 +1,5 @@
 const TuyaAccessory = require('./lib/TuyaAccessory');
 const TuyaDiscovery = require('./lib/TuyaDiscovery');
-
 const OutletAccessory = require('./lib/OutletAccessory');
 const SimpleLightAccessory = require('./lib/SimpleLightAccessory');
 const MultiOutletAccessory = require('./lib/MultiOutletAccessory');
@@ -24,8 +23,8 @@ const SwitchAccessory = require('./lib/SwitchAccessory');
 const ValveAccessory = require('./lib/ValveAccessory');
 const OilDiffuserAccessory = require('./lib/OilDiffuserAccessory');
 
-const PLUGIN_NAME = 'homebridge-tuya-lan';
-const PLATFORM_NAME = 'TuyaLan';
+const PLUGIN_NAME = 'homebridge-tuya';
+const PLATFORM_NAME = 'Tuya';
 
 const CLASS_DEF = {
     outlet: OutletAccessory,
