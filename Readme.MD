@@ -10,10 +10,14 @@
 
 </span>
 
+# Overview 
 
-Homebridge-tuya is a homebridge plugin that lets you control your Tuya based devices with Homekit. 
+Homebridge plugin to connect Tuya based devices into HomeKit using local control.
 
-Some devices may not be supported. Please check the common issues tab in the wiki for more info. 
+## Features
+* Control Air Conditioners, AirPurifiers, Convectors, DeHumidifiers, Outlets, Oil Diffusers, Garages, Lights, Dimmers, Fans, Heaters, Switches, etc.
+* Supports adaptive lighting
+* Local device control
 
 
 ## Installation 
@@ -29,7 +33,6 @@ To use this plugin, follow the steps below:
 
 To find your devices configuration parameters, please look at the Wiki.
 
-**Note** The wiki has some inconsitencies with V1 and 2. I will fix this, I justt need to wait for V2, before it's all up-to-date. 
 
 **To get ID and Key** Watch [this](https://www.youtube.com/watch?v=oq0JL_wicKg) video. 
 
@@ -39,14 +42,12 @@ If you spot any errors with the plugin, or have a question, feel free to open a 
 
 Please be sure to check the Common Issues tab in the wiki, before you open an issue.
 
-My goal is to reply to an issue within 48 hours. If I am delayed, please @ me so I can get the notification, or shoot me a tweet @iRayanKhan. 
 
 ## Contribution guide
 
 Any help is welcome! 
 
-If you would like to make refinments to this plugin, add new device support, or anything else feel free to make a fork, and submit a PR detailing the changes you made, and why. 
-
+If you would like to make refinments to this plugin, add new device support, or anything else feel free to make a fork, and submit a PR detailing the changes you made.
 
 
 ## Credits
