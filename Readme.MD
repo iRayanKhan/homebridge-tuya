@@ -63,7 +63,7 @@ Search for "Tuya" in [homebridge-config-ui-x](https://github.com/oznu/homebridge
 sudo npm install -g homebridge-tuya
 ```
 
-## Configuration
+## UI Configuration
 
 1. Navigate to the Plugins page in [homebridge-config-ui-x](https://github.com/oznu/homebridge-config-ui-x).
 2. Click the **Settings** button for the Tuya plugin.
@@ -71,13 +71,18 @@ sudo npm install -g homebridge-tuya
 4. Add device parameters<sup>[10](apple.com/)</sup>
 5. Restart Homebridge for the changes to take effect.
 
+## Manual Configuration 
+1. Edit the config.json file to add your device types, and parameters. 
+2. Restart Homebridge
+
 
 ## Known Issues
 
 1. If your devices add, but you can't control them, make sure you entered the DataPoint "DP" values for your device. 
 
 ## Troubleshooting
-
+1. Make sure the plugin is up-to date
+2. Check for existing issues
 
 
 ## Contributing
