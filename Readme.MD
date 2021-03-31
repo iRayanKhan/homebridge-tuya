@@ -28,25 +28,24 @@ Control your supported Tuya accessories locally in HomeKit
 * [Donating](#donating)
 
 ## Supported Device Types
- Control Air Conditioners, AirPurifiers, Convectors, DeHumidifiers, Outlets, Oil Diffusers, Garages, Lights, Dimmers, Fans, Heaters, Switches, etc.
+> Click the number next to your device to find the possible DataPoint "DP" values.
 
 * Air Conditioner<sup>[1](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types#air-conditioners)</sup> 
 * Air Purifiers
 * Convectors
 * Dehumidifers
 * Dimmers
-* Outlets
-* Oil Diffusers
+* Fan
+* Fan v2
 * Garages
+* Heaters
 * Lights
   * On/Off
   * Brightness
   * Color (Hue/Saturation/Adaptive Lighting)
-* Fan
-* Fan v2
-* Heaters
+* Oil Diffusers
+* Outlets
 * Switches
-* etc
 
 Note: Motion, and other sensor types don't behave well with responce requests, so they will not be added. 
 
@@ -63,7 +62,8 @@ Search for "Tuya" in [homebridge-config-ui-x](https://github.com/oznu/homebridge
 sudo npm install -g homebridge-tuya
 ```
 
-## UI Configuration
+## Configuration
+> UI
 
 1. Navigate to the Plugins page in [homebridge-config-ui-x](https://github.com/oznu/homebridge-config-ui-x).
 2. Click the **Settings** button for the Tuya plugin.
@@ -71,7 +71,8 @@ sudo npm install -g homebridge-tuya
 4. Add device parameters<sup>[10](apple.com/)</sup>
 5. Restart Homebridge for the changes to take effect.
 
-## Manual Configuration 
+> Manual
+
 1. Edit the config.json file to add your device types, and parameters. 
 2. Restart Homebridge
 
@@ -93,8 +94,8 @@ If you have new accessory logic for a new device, please add a function defined 
 
 * [AMoo-Miki](https://github.com/AMoo-Miki) - developer of the [Tuya-Lan](https://github.com/AMoo-Miki/homebridge-tuya-lan) plugin which this plugin is based off. 
 * mxDanger - Plugin branding.
-* [CodeTheWeb](https://github.com/CodeTheWeb) - developer of Tuya-CLI, who gratiously gave me this repo's name.
-* [Oznu](https://github.com/oznu) - developer of Homebridge, added ```config.schema.json``` , based this readME off his gsh readME, and fixed dependencies.
+* [CodeTheWeb](https://github.com/CodeTheWeb) - developer of [TuyaApi](https://github.com/codetheweb/tuyapi), who gratiously provided this repo's name.
+* [Oznu](https://github.com/oznu) - developer of Homebridge, added ```config.schema.json``` , fixed dependencies, and helped inspire this readME off his [gsh](https://github.com/oznu/homebridge-gsh) plugin.
 
 ## License
 
