@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. This project uses [semantic versioning](https://semver.org/).
 
+## 2.1.0 (2021-04-15)
+This update includes the following changes:
+* [+] New readME 
+* [+] Fix unnecessary console spam [#240](https://github.com/iRayanKhan/homebridge-tuya/issues/240), thanks @EdwinJS [#247](https://github.com/iRayanKhan/homebridge-tuya/pull/247)
+* [+] Fix Typo ```"Simple Blinds2"``` --> ```SimpleBlinds2``` in ```config.json```. [#231](https://github.com/iRayanKhan/homebridge-tuya/issues/231)
+
+
+
 ## 2.0.0 (2021-03-12)
 This update includes the following changes:
 
