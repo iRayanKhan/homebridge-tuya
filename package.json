@@ -1,6 +1,6 @@
 {
   "name": "homebridge-tuya",
-  "version": "2.1.0-beta.2",
+  "version": "2.1.0-beta.3",
   "description": "🏠 Offical Homebridge plugin for TuyAPI ",
   "main": "index.js",
   "scripts": {
