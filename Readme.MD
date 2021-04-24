@@ -1,61 +1,106 @@
-<span align="center">
+<p align="center">
+    <img src="https://github.com/iRayanKhan/Assets-Repo/blob/master/Tuya-Plugin-Branding.png?raw=true" height="100"><br>
+</p>
 
-<a href="https://github.com/iRayanKhan/Assets-Repo/blob/master/Tuya-Plugin-Branding.png?raw=true"><img alt="homebridge-verified" src="https://github.com/iRayanKhan/Assets-Repo/blob/master/Tuya-Plugin-Branding.png?raw=true" width="500px"></a>
+
+<span align="center">
 
 # Homebridge-Tuya
 
-<a href="https://www.npmjs.com/package/homebridge-tuya"><img title="npm version" src="https://badgen.net/npm/v/homebridge-tuya" ></a>
-<a href="https://www.npmjs.com/package/homebridge-tuya"><img title="npm downloads" src="https://badgen.net/npm/dt/homebridge-tuya" ></a>
+[![npm](https://img.shields.io/npm/v/homebridge-tuya.svg)](https://www.npmjs.com/package/homebridge-tuya)
+[![npm](https://img.shields.io/npm/dt/homebridge-tuya.svg)](https://www.npmjs.com/package/homebridge-tuya)
 [![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
+
 
 </span>
 
 
-Homebridge-tuya is a homebridge plugin that lets you control your Tuya based devices with Homekit. 
 
-Some devices may not be supported. Please check the common issues tab in the wiki for more info. 
+Control your supported Tuya accessories locally in HomeKit
 
+* [Supported Device Types](#supported-device-types)
+* [Installation Instructions](#installation-instructions)
+* [Configuration](#configuration)
+* [Known Issues](#known-issues)
+* [Troubleshooting](#troubleshooting)
+* [Credits](#credits)
+* [License](#license)
+* [Donating](#donating)
 
-## Installation 
-To use this plugin, follow the steps below:
+## Supported Device Types
+> Click the number next to your device to find the possible DataPoint "DP" values, then add as needed to your config.
 
-1) Install [Homebridge](https://github.com/homebridge/homebridge), if you haven't already.
+* Air Conditioner<sup>[1](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types#air-conditioners)</sup> 
+* Air Purifiers<sup>[2]()</sup>
+* Convectors<sup>[3](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types#heat-convectors)</sup>
+* Dehumidifers<sup>[4](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types)</sup>
+* Dimmers<sup>[5](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types#simple-dimmers)</sup>
+* Fan<sup>[6](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types)</sup>
+* Fan v2<sup>[7](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types)</sup>
+* Garages<sup>[8](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types#garage-doors)</sup>
+* Heaters<sup>[9](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types)</sup>
+* Lights
+  * On/Off<sup>[10](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types)</sup>
+  * Brightness<sup>[11](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types#tunable-white-light-bulbs)</sup>
+  * Color<sup>[12](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types#white-and-color-light-bulbs)</sup> (Hue, Saturation, Adaptive Lighting)
+* Oil Diffusers<sup>[13](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types)</sup>
+* Outlets<sup>[14](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types#outlets)</sup>
+* Switches<sup>[15](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types)</sup>
 
-2) Install this plugin. You may need to prefix this command with ```sudo``` if you run into any issues.
-
-```npm i -g homebridge-tuya```
-
-3) Add your device's parameters to your ```config.json``` file, then reload Homebridge.
-
-To find your devices configuration parameters, please look at the Wiki.
-
-**Note** The wiki has some inconsitencies with V1 and 2. I will fix this, I justt need to wait for V2, before it's all up-to-date. 
-
-**To get ID and Key** Watch [this](https://www.youtube.com/watch?v=oq0JL_wicKg) video. 
-
-## Issues
-
-If you spot any errors with the plugin, or have a question, feel free to open a issue.
-
-Please be sure to check the Common Issues tab in the wiki, before you open an issue.
-
-My goal is to reply to an issue within 48 hours. If I am delayed, please @ me so I can get the notification, or shoot me a tweet @iRayanKhan. 
-
-## Contribution guide
-
-Any help is welcome! 
-
-If you would like to make refinments to this plugin, add new device support, or anything else feel free to make a fork, and submit a PR detailing the changes you made, and why. 
+Note: Motion, and other sensor types don't behave well with responce requests, so they will not be added. 
 
 
+## Installation Instructions
+
+#### Option 1: Install via Homebridge Config UI X:
+
+Search for "Tuya" in [homebridge-config-ui-x](https://github.com/oznu/homebridge-config-ui-x) and install `homebridge-tuya`.
+
+#### Option 2: Manually Install:
+
+```
+sudo npm install -g homebridge-tuya
+```
+
+## Configuration
+> UI
+
+1. Navigate to the Plugins page in [homebridge-config-ui-x](https://github.com/oznu/homebridge-config-ui-x).
+2. Click the **Settings** button for the Tuya plugin.
+3. Add your device types
+4. Add device parameters<sup>[10](apple.com/)</sup>
+5. Restart Homebridge for the changes to take effect.
+
+> Manual
+
+1. Edit the config.json file to add your device types, and parameters. 
+2. Restart Homebridge
+
+
+## Known Issues
+
+1. If your devices add, but you can't control them, make sure you entered the DataPoint "DP" values for your device. 
+
+## Troubleshooting
+1. Make sure the plugin is up-to date
+2. Check for existing issues
+
+
+## Contributing
+
+If you have new accessory logic for a new device, please add a function defined by manufacturer, and describe your changes in the readME file. 
 
 ## Credits
 
-CodeTheWeb - Original repo
+* [AMoo-Miki](https://github.com/AMoo-Miki) - developer of the [Tuya-Lan](https://github.com/AMoo-Miki/homebridge-tuya-lan) plugin which this plugin is based off. 
+* mxDanger - Plugin branding.
+* [CodeTheWeb](https://github.com/CodeTheWeb) - developer of [TuyaApi](https://github.com/codetheweb/tuyapi), who gratiously provided this repo's name.
+* [Oznu](https://github.com/oznu) - developer of Homebridge, added ```config.schema.json``` , fixed dependencies, and helped inspire this readME off his [gsh](https://github.com/oznu/homebridge-gsh) plugin.
 
-mxdanger   - Plugin branding 
+## License
 
-Amoo-Miki  - Plugin core
 
-Oznu       - config.schema, and various enhancements in V2.0.0
 
+## Donating
+
+Please donate to a local pet shelter, or food pantry. It's been a wild time, but we can do our part by helping others. 

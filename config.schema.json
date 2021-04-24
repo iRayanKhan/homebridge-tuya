@@ -1,5 +1,5 @@
   {
-    "pluginAlias": "TuyaLan",
+    "pluginAlias": "Tuya",
     "pluginType": "platform",
     "singular": true,
     "headerDisplay": "<p align='center'><img height='60px' src='https://user-images.githubusercontent.com/3979615/78354049-dc7ff780-75f6-11ea-8026-2f8bf81d8331.png'></p>\n\nBefore using the Tuya plugin you need to discover your devices by following [these instructions](https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Setup-Instructions).\n\n",
@@ -407,6 +407,20 @@
                 }
               },
               "temperatureDivisor": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "thresholdTemperatureDivisor": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "targetTemperatureDivisor": {
                 "type": "integer",
                 "placeholder": "1",
                 "condition": {
