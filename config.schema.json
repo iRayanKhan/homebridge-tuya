@@ -99,7 +99,7 @@
                   {
                     "title": "Simple Blinds2",
                     "enum": [
-                      "SimpleBlinds2"
+                      "Simple Blinds2"
                     ]
                   },
                   {
@@ -407,6 +407,20 @@
                 }
               },
               "temperatureDivisor": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "thresholdTemperatureDivisor": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "targetTemperatureDivisor": {
                 "type": "integer",
                 "placeholder": "1",
                 "condition": {
