@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. This project uses [semantic versioning](https://semver.org/).
 
+## 2.0.1 (2021-03-25)
+This update includes the following changes:
+
+[+] Fixes [#233](https://github.com/iRayanKhan/homebridge-tuya/issues/233#issue-833662092), where tempature divisor was not applying, thanks @xortuna [#238](https://github.com/iRayanKhan/homebridge-tuya/pull/238)
+
+[!] Note: The next release of this plugin (2.1.0) will change the config to "Tuya", instead of "TuyaLan". No change is needed 'till 2.1.0 is released.
+I am in need of beta testers for 2.1.0 once the next beta goes live, please stay tuned in the homebridge discord server for an announcement. 
+
 ## 2.0.0 (2021-03-12)
 This update includes the following changes:
 
