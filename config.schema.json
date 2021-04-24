@@ -413,6 +413,20 @@
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
                 }
               },
+              "thresholdTemperatureDivisor": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "targetTemperatureDivisor": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
               "dpAction": {
                 "type": "integer",
                 "placeholder": "1",
