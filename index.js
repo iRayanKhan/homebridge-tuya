@@ -209,7 +209,7 @@ class TuyaLan {
         if (!accessory) {
             accessory = new PlatformAccessory(deviceConfig.name, deviceConfig.UUID, Accessory.getCategory(Categories));
             accessory.getService(Service.AccessoryInformation)
-                .setCharacteristic(Characteristic.Manufacturer, (deviceConfig.manufacturer).trim())
+                .setCharacteristic(Characteristic.Manufacturer, deviceConfig.manufacturer || "Unknown")
                 .setCharacteristic(Characteristic.Model, deviceConfig.model || "Unknown")
                 .setCharacteristic(Characteristic.SerialNumber, deviceConfig.id.slice(8));
 
