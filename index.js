@@ -162,7 +162,8 @@ class TuyaLan {
     }
 
     configureAccessory(accessory) {
-        if (accessory instanceof PlatformAccessory && this._expectedUUIDs.includes(accessory.UUID)) {
+        // also checks null objects or empty config - this._expectedUUIDs
+        if (accessory instanceof PlatformAccessory && this._expectedUUIDs && this._expectedUUIDs.includes(accessory.UUID)) {
             this.cachedAccessories.set(accessory.UUID, accessory);
             accessory.services.forEach(service => {
                 if (service.UUID === Service.AccessoryInformation.UUID) return;
