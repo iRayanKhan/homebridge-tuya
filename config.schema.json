@@ -121,16 +121,15 @@
               "description": "Anything you'd like to use to identify this device. You can always change the name from within the Home app later.",
               "required": true,
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
+                "functionBody": "return model.devices && model.devices[arrayIndices].type && !['null'].includes(model.devices[arrayIndices].type);"
               }
             },
             "id": {
-              "type": "string",
               "title": "Tuya ID",
-              "description": "If you don't have the Tuya ID or Key, follow the steps found on the <a href='https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Setup-Instructions' target='_blank'>Setup Instructions</a> page.",
+              "type": "string",
               "required": true,
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
+                "functionBody": "return model.devices && model.devices[arrayIndices].type && !['null'].includes(model.devices[arrayIndices].type);"
               }
             },
             "key": {
@@ -138,29 +137,23 @@
               "type": "string",
               "required": true,
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
+                "functionBody": "return model.devices && model.devices[arrayIndices].type && !['null'].includes(model.devices[arrayIndices].type);"
               }
             },
             "manufacturer": {
               "type": "string",
-              "required": true,
               "description": "Anything you'd like to use to help identify this device.",
-              "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
-              }
+              "required": true
             },
             "model": {
               "type": "string",
-              "description": "Anything you'd like to use to help identify this device.",
-              "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
-              }
+              "description": "Anything you'd like to use to help identify this device."
             },
             "voltsId": {
               "type": "integer",
               "placeholder": "9",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "ampsId": {
@@ -174,21 +167,21 @@
               "type": "integer",
               "placeholder": "7",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "voltsDivisor": {
               "type": "integer",
               "placeholder": "10",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "ampsDivisor": {
               "type": "integer",
               "placeholder": "1000",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "wattsDivisor": {
@@ -209,27 +202,27 @@
               "type": "integer",
               "placeholder": "2",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'SimpleDimmer','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'SimpleDimmer', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "dpColorTemperature": {
               "type": "integer",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "minWhiteColor": {
               "type": "integer",
               "placeholder": "140",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "maxWhiteColor": {
               "type": "integer",
               "placeholder": "400",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "dpMode": {
@@ -243,28 +236,28 @@
               "type": "integer",
               "placeholder": "5",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "colorFunction": {
               "type": "string",
               "placeholder": "HEXHSB",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "scaleBrightness": {
               "type": "integer",
               "placeholder": "255",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "scaleWhiteColor": {
               "type": "integer",
               "placeholder": "255",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "outletCount": {
@@ -335,14 +328,14 @@
               "type": "integer",
               "placeholder": "15",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner','Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner', 'Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
               }
             },
             "maxTemperature": {
               "type": "integer",
               "placeholder": "40",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner','Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner', 'Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
               }
             },
             "minTemperatureSteps": {
@@ -493,8 +486,8 @@
       "type": "tabarray",
       "title": "{{ value.name || 'new device' }}",
       "items": [
-        "devices[].name",
         "devices[].type",
+        "devices[].name",
         "devices[].id",
         "devices[].key",
         {
@@ -559,7 +552,10 @@
             "devices[].timeToOpen",
             "devices[].timeToTighten",
             "devices[].dpLight"
-          ]
+          ],
+          "condition": {
+            "functionBody": "return model.devices && model.devices[arrayIndices].type && !['null'].includes(model.devices[arrayIndices].type);"
+          }
         },
         {
           "key": "devices[]",
@@ -570,7 +566,10 @@
           "items": [
             "devices[].manufacturer",
             "devices[].model"
-          ]
+          ],
+          "condition": {
+            "functionBody": "return model.devices && model.devices[arrayIndices].type && !['null'].includes(model.devices[arrayIndices].type);"
+          }
         }
       ]
     }
