@@ -3,7 +3,7 @@
   "pluginType": "platform",
   "singular": true,
   "headerDisplay": "<p align='center'><img height='60px' src='https://user-images.githubusercontent.com/3979615/78354049-dc7ff780-75f6-11ea-8026-2f8bf81d8331.png'></p>\n\nBefore using the Tuya plugin you need to discover your devices by following [these instructions](https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Setup-Instructions).\n\n",
-  "footerDisplay": "",
+  "footerDisplay": "If you don't have the Tuya ID or Key, follow the steps found on the <a href='https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Setup-Instructions' target='_blank'>Setup Instructions</a> page.",
   "schema": {
     "type": "object",
     "properties": {
@@ -28,6 +28,12 @@
                   "title": "Smart Plug / Barely Smart Power Strip",
                   "enum": [
                     "Outlet"
+                  ]
+                },
+                {
+                  "title": "Smart Switch",
+                  "enum": [
+                    "Switch"
                   ]
                 },
                 {
@@ -196,7 +202,7 @@
               "type": "integer",
               "placeholder": "1",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'TWLight', 'RGBTWLight', 'SimpleDimmer','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'Switch', 'TWLight', 'RGBTWLight', 'SimpleLight', 'SimpleDimmer', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "dpBrightness": {
@@ -284,6 +290,13 @@
               },
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['CustomMultiOutlet'].includes(model.devices[arrayIndices].type);"
+              }
+            },
+            "switchCount": {
+              "type": "integer",
+              "placeholder": "1",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Switch'].includes(model.devices[arrayIndices].type);"
               }
             },
             "noCool": {
@@ -502,6 +515,7 @@
                 "devices[].outlets[].dp"
               ]
             },
+            "devices[].switchCount",
             "devices[].voltsId",
             "devices[].ampsId",
             "devices[].wattsId",
