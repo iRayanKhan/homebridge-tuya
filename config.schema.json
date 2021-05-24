@@ -14,6 +14,7 @@
           "type": "object",
           "properties": {
             "type": {
+              "title": "Type of device",
               "type": "string",
               "required": true,
               "default": "null",
@@ -25,15 +26,27 @@
                   ]
                 },
                 {
+                  "title": "Smart Switch",
+                  "enum": [
+                    "Switch"
+                  ]
+                },
+                {
                   "title": "Smart Plug / Barely Smart Power Strip",
                   "enum": [
                     "Outlet"
                   ]
                 },
                 {
-                  "title": "Smart Switch",
+                  "title": "Smart Plug / White and Color Lights",
                   "enum": [
-                    "Switch"
+                    "RGBTWOutlet"
+                  ]
+                },
+                {
+                  "title": "Smart Power Strip",
+                  "enum": [
+                    "MultiOutlet"
                   ]
                 },
                 {
@@ -52,12 +65,6 @@
                   "title": "White and Color Light Bulb",
                   "enum": [
                     "RGBTWLight"
-                  ]
-                },
-                {
-                  "title": "Smart Power Strip",
-                  "enum": [
-                    "MultiOutlet"
                   ]
                 },
                 {
@@ -103,20 +110,15 @@
                   ]
                 },
                 {
-                  "title": "Simple Blinds2",
+                  "title": "Simple Blinds 2",
                   "enum": [
-                    "Simple Blinds2"
-                  ]
-                },
-                {
-                  "title": "Smart Plug w/ White and Color Lights",
-                  "enum": [
-                    "RGBTWOutlet"
+                    "SimpleBlinds2"
                   ]
                 }
               ]
             },
             "name": {
+              "title": "Name",
               "type": "string",
               "description": "Anything you'd like to use to identify this device. You can always change the name from within the Home app later.",
               "required": true,
@@ -140,16 +142,8 @@
                 "functionBody": "return model.devices && model.devices[arrayIndices].type && !['null'].includes(model.devices[arrayIndices].type);"
               }
             },
-            "manufacturer": {
-              "type": "string",
-              "description": "Anything you'd like to use to help identify this device.",
-              "required": true
-            },
-            "model": {
-              "type": "string",
-              "description": "Anything you'd like to use to help identify this device."
-            },
             "voltsId": {
+              "title": "Data point (Volt)",
               "type": "integer",
               "placeholder": "9",
               "condition": {
@@ -157,13 +151,15 @@
               }
             },
             "ampsId": {
+              "title": "Data point (Current)",
               "type": "integer",
               "placeholder": "8",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "wattsId": {
+              "title": "Data point (Power)",
               "type": "integer",
               "placeholder": "7",
               "condition": {
@@ -171,6 +167,7 @@
               }
             },
             "voltsDivisor": {
+              "title": "Volt divisor",
               "type": "integer",
               "placeholder": "10",
               "condition": {
@@ -178,6 +175,7 @@
               }
             },
             "ampsDivisor": {
+              "title": "Current divisor",
               "type": "integer",
               "placeholder": "1000",
               "condition": {
@@ -185,13 +183,15 @@
               }
             },
             "wattsDivisor": {
+              "title": "Power divisor",
               "type": "integer",
               "placeholder": "10",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "dpPower": {
+              "title": "Data point (State)",
               "type": "integer",
               "placeholder": "1",
               "condition": {
@@ -199,6 +199,7 @@
               }
             },
             "dpBrightness": {
+              "title": "Data point (Brightness)",
               "type": "integer",
               "placeholder": "2",
               "condition": {
@@ -206,12 +207,14 @@
               }
             },
             "dpColorTemperature": {
+              "title": "Data point (Color temperature)",
               "type": "integer",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "minWhiteColor": {
+              "title": "White color (min.)",
               "type": "integer",
               "placeholder": "140",
               "condition": {
@@ -219,6 +222,7 @@
               }
             },
             "maxWhiteColor": {
+              "title": "White color (max.)",
               "type": "integer",
               "placeholder": "400",
               "condition": {
@@ -226,6 +230,7 @@
               }
             },
             "dpMode": {
+              "title": "Data point (Mode)",
               "type": "integer",
               "placeholder": "2",
               "condition": {
@@ -233,20 +238,46 @@
               }
             },
             "dpColor": {
+              "title": "Data point (Color)",
               "type": "integer",
               "placeholder": "5",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
+            "dpLight": {
+              "title": "Data point (Light)",
+              "type": "integer",
+              "placeholder": 1,
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+              }
+            },
             "colorFunction": {
+              "title": "Color mode",
               "type": "string",
-              "placeholder": "HEXHSB",
+              "required": true,
+              "default": "HSB",
+              "oneOf": [
+                {
+                  "title": "HSB",
+                  "enum": [
+                    "HSB"
+                  ]
+                },
+                {
+                  "title": "HEXHSB",
+                  "enum": [
+                    "HEXHSB"
+                  ]
+                }
+              ],
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "scaleBrightness": {
+              "title": "Brightness scale",
               "type": "integer",
               "placeholder": "255",
               "condition": {
@@ -254,6 +285,7 @@
               }
             },
             "scaleWhiteColor": {
+              "title": "White color scale",
               "type": "integer",
               "placeholder": "255",
               "condition": {
@@ -261,6 +293,7 @@
               }
             },
             "outletCount": {
+              "title": "Outlets count",
               "type": "integer",
               "placeholder": "5",
               "condition": {
@@ -268,6 +301,7 @@
               }
             },
             "outlets": {
+              "title": "Outlets",
               "type": "array",
               "orderable": false,
               "items": {
@@ -286,6 +320,7 @@
               }
             },
             "switchCount": {
+              "title": "Switchs count",
               "type": "integer",
               "placeholder": "1",
               "condition": {
@@ -293,18 +328,21 @@
               }
             },
             "noCool": {
+              "title": "No cool",
               "type": "boolean",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
               }
             },
             "noHeat": {
+              "title": "No heat",
               "type": "boolean",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
               }
             },
             "cmdCool": {
+              "title": "Command (Cool)",
               "type": "string",
               "placeholder": "COOL",
               "condition": {
@@ -312,6 +350,7 @@
               }
             },
             "cmdHeat": {
+              "title": "Command (Heat)",
               "type": "string",
               "placeholder": "HEAT",
               "condition": {
@@ -319,12 +358,14 @@
               }
             },
             "noSwing": {
+              "title": "No swing",
               "type": "boolean",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
               }
             },
             "minTemperature": {
+              "title": "Temperature (Min.)",
               "type": "integer",
               "placeholder": "15",
               "condition": {
@@ -332,6 +373,7 @@
               }
             },
             "maxTemperature": {
+              "title": "Temperature (Max.)",
               "type": "integer",
               "placeholder": "40",
               "condition": {
@@ -339,6 +381,7 @@
               }
             },
             "minTemperatureSteps": {
+              "title": "Temperature step (Min.)",
               "type": "integer",
               "placeholder": "1",
               "condition": {
@@ -346,6 +389,7 @@
               }
             },
             "dpActive": {
+              "title": "Data point (Active)",
               "type": "integer",
               "placeholder": "7",
               "condition": {
@@ -353,6 +397,7 @@
               }
             },
             "dpDesiredTemperature": {
+              "title": "Data point (Target temperature)",
               "type": "integer",
               "placeholder": "2",
               "condition": {
@@ -360,6 +405,7 @@
               }
             },
             "dpCurrentTemperature": {
+              "title": "Data point (Current temperature)",
               "type": "integer",
               "placeholder": "3",
               "condition": {
@@ -367,6 +413,7 @@
               }
             },
             "dpRotationSpeed": {
+              "title": "Data point (Rotation speed)",
               "type": "integer",
               "placeholder": "4",
               "condition": {
@@ -374,6 +421,7 @@
               }
             },
             "dpChildLock": {
+              "title": "Data point (Child lock)",
               "type": "integer",
               "placeholder": "6",
               "condition": {
@@ -381,6 +429,7 @@
               }
             },
             "dpTemperatureDisplayUnits": {
+              "title": "Data point (Temperature display unit)",
               "type": "integer",
               "placeholder": "19",
               "condition": {
@@ -388,6 +437,7 @@
               }
             },
             "cmdLow": {
+              "title": "Command (Low)",
               "type": "string",
               "placeholder": "Low",
               "condition": {
@@ -395,6 +445,7 @@
               }
             },
             "cmdHigh": {
+              "title": "Command (High)",
               "type": "string",
               "placeholder": "High",
               "condition": {
@@ -402,18 +453,21 @@
               }
             },
             "noChildLock": {
+              "title": "No child lock",
               "type": "boolean",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
               }
             },
             "noTemperatureUnit": {
+              "title": "No temperature",
               "type": "boolean",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
               }
             },
             "temperatureDivisor": {
+              "title": "Temperature (Divisor)",
               "type": "integer",
               "placeholder": "1",
               "condition": {
@@ -421,6 +475,7 @@
               }
             },
             "thresholdTemperatureDivisor": {
+              "title": "Temperature threshold (Divisor)",
               "type": "integer",
               "placeholder": "1",
               "condition": {
@@ -428,6 +483,7 @@
               }
             },
             "targetTemperatureDivisor": {
+              "title": "Temperature target (Divisor)",
               "type": "integer",
               "placeholder": "1",
               "condition": {
@@ -435,6 +491,7 @@
               }
             },
             "dpAction": {
+              "title": "Data point (Action)",
               "type": "integer",
               "placeholder": "1",
               "condition": {
@@ -442,38 +499,70 @@
               }
             },
             "dpStatus": {
+              "title": "Data point (Status)",
               "type": "integer",
               "placeholder": "2",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['GarageDoor'].includes(model.devices[arrayIndices].type);"
               }
             },
+            "cmdOpen": {
+              "title": "Command (Open)",
+              "type": "string",
+              "placeholder": "Open",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds', 'SimpleBlinds2'].includes(model.devices[arrayIndices].type);"
+              }
+            },
+            "cmdClose": {
+              "title": "Command (Close)",
+              "type": "string",
+              "placeholder": "Close",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds', 'SimpleBlinds2'].includes(model.devices[arrayIndices].type);"
+              }
+            },
+            "cmdStop": {
+              "title": "Command (Stop)",
+              "type": "string",
+              "placeholder": "Stop",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds', 'SimpleBlinds2'].includes(model.devices[arrayIndices].type);"
+              }
+            },
             "flipState": {
+              "title": "Flip state",
               "type": "boolean",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['GarageDoor','SimpleBlinds'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['GarageDoor', 'SimpleBlinds', 'SimpleBlinds2'].includes(model.devices[arrayIndices].type);"
               }
             },
             "timeToOpen": {
+              "title": "Time to open",
               "type": "integer",
               "placeholder": "45",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds', 'SimpleBlinds2'].includes(model.devices[arrayIndices].type);"
               }
             },
             "timeToTighten": {
+              "title": "Time to tighten",
               "type": "integer",
               "placeholder": "0",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds', 'SimpleBlinds2'].includes(model.devices[arrayIndices].type);"
               }
             },
-            "dpLight": {
-              "type": "integer",
-              "placeholder": 1,
-              "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
-              }
+            "manufacturer": {
+              "title": "Manufacturer",
+              "type": "string",
+              "description": "Anything you'd like to use to help identify this device.",
+              "required": true
+            },
+            "model": {
+              "title": "Model",
+              "type": "string",
+              "description": "Anything you'd like to use to help identify this device."
             }
           }
         }
@@ -508,50 +597,53 @@
                 "devices[].outlets[].dp"
               ]
             },
+            "devices[].noSwing",
+            "devices[].noCool",
+            "devices[].noHeat",
+            "devices[].noChildLock",
+            "devices[].noTemperatureUnit",
+            "devices[].flipState",
             "devices[].switchCount",
-            "devices[].voltsId",
-            "devices[].ampsId",
-            "devices[].wattsId",
-            "devices[].voltsDivisor",
-            "devices[].ampsDivisor",
-            "devices[].wattsDivisor",
             "devices[].dpPower",
             "devices[].dpMode",
             "devices[].dpBrightness",
             "devices[].dpColorTemperature",
             "devices[].dpColor",
-            "devices[].colorFunction",
+            "devices[].dpLight",
+            "devices[].voltsId",
+            "devices[].voltsDivisor",
+            "devices[].ampsId",
+            "devices[].ampsDivisor",
+            "devices[].wattsId",
+            "devices[].wattsDivisor",
+            "devices[].dpActive",
+            "devices[].dpDesiredTemperature",
+            "devices[].dpCurrentTemperature",
+            "devices[].dpTemperatureDisplayUnits",
+            "devices[].dpRotationSpeed",
+            "devices[].dpChildLock",
+            "devices[].dpAction",
+            "devices[].dpStatus",
+            "devices[].cmdCool",
+            "devices[].cmdHeat",
+            "devices[].cmdLow",
+            "devices[].cmdHigh",
+            "devices[].cmdOpen",
+            "devices[].cmdClose",
+            "devices[].cmdStop",
             "devices[].scaleBrightness",
             "devices[].scaleWhiteColor",
             "devices[].minWhiteColor",
             "devices[].maxWhiteColor",
-            "devices[].noCool",
-            "devices[].noHeat",
-            "devices[].cmdCool",
-            "devices[].cmdHeat",
-            "devices[].noSwing",
+            "devices[].colorFunction",
             "devices[].minTemperature",
             "devices[].maxTemperature",
             "devices[].minTemperatureSteps",
-            "devices[].dpActive",
-            "devices[].dpDesiredTemperature",
-            "devices[].dpCurrentTemperature",
-            "devices[].dpRotationSpeed",
-            "devices[].dpChildLock",
-            "devices[].dpTemperatureDisplayUnits",
-            "devices[].cmdLow",
-            "devices[].cmdHigh",
-            "devices[].noChildLock",
-            "devices[].noTemperatureUnit",
             "devices[].temperatureDivisor",
-            "devices[].thresholdTemperatureDivisor",
             "devices[].targetTemperatureDivisor",
-            "devices[].dpAction",
-            "devices[].dpStatus",
-            "devices[].flipState",
+            "devices[].thresholdTemperatureDivisor",
             "devices[].timeToOpen",
-            "devices[].timeToTighten",
-            "devices[].dpLight"
+            "devices[].timeToTighten"
           ],
           "condition": {
             "functionBody": "return model.devices && model.devices[arrayIndices].type && !['null'].includes(model.devices[arrayIndices].type);"
