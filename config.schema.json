@@ -198,6 +198,14 @@
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'Switch', 'TWLight', 'RGBTWLight', 'SimpleLight', 'SimpleDimmer', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
+            "dpMode": {
+              "title": "Data point (Mode)",
+              "type": "integer",
+              "placeholder": "2",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+              }
+            },
             "dpBrightness": {
               "title": "Data point (Brightness)",
               "type": "integer",
@@ -211,6 +219,22 @@
               "type": "integer",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+              }
+            },
+            "dpColor": {
+              "title": "Data point (Color)",
+              "type": "integer",
+              "placeholder": "5",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+              }
+            },
+            "dpLight": {
+              "title": "Data point (Light)",
+              "type": "integer",
+              "placeholder": "1",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "minWhiteColor": {
@@ -229,28 +253,20 @@
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
-            "dpMode": {
-              "title": "Data point (Mode)",
+            "scaleBrightness": {
+              "title": "Brightness scale",
               "type": "integer",
-              "placeholder": "2",
+              "placeholder": "255",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
-            "dpColor": {
-              "title": "Data point (Color)",
+            "scaleWhiteColor": {
+              "title": "White color scale",
               "type": "integer",
-              "placeholder": "5",
+              "placeholder": "255",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
-              }
-            },
-            "dpLight": {
-              "title": "Data point (Light)",
-              "type": "integer",
-              "placeholder": 1,
-              "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
             },
             "colorFunction": {
@@ -272,22 +288,6 @@
                   ]
                 }
               ],
-              "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
-              }
-            },
-            "scaleBrightness": {
-              "title": "Brightness scale",
-              "type": "integer",
-              "placeholder": "255",
-              "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
-              }
-            },
-            "scaleWhiteColor": {
-              "title": "White color scale",
-              "type": "integer",
-              "placeholder": "255",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
               }
@@ -341,6 +341,13 @@
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
               }
             },
+            "noSwing": {
+              "title": "No swing",
+              "type": "boolean",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
+              }
+            },
             "cmdCool": {
               "title": "Command (Cool)",
               "type": "string",
@@ -357,35 +364,18 @@
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
               }
             },
-            "noSwing": {
-              "title": "No swing",
+            "noChildLock": {
+              "title": "No child lock",
               "type": "boolean",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
               }
             },
-            "minTemperature": {
-              "title": "Temperature (Min.)",
-              "type": "integer",
-              "placeholder": "15",
+            "noTemperatureUnit": {
+              "title": "No temperature",
+              "type": "boolean",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner', 'Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
-              }
-            },
-            "maxTemperature": {
-              "title": "Temperature (Max.)",
-              "type": "integer",
-              "placeholder": "40",
-              "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner', 'Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
-              }
-            },
-            "minTemperatureSteps": {
-              "title": "Temperature step (Min.)",
-              "type": "integer",
-              "placeholder": "1",
-              "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
               }
             },
             "dpActive": {
@@ -396,18 +386,18 @@
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
               }
             },
-            "dpDesiredTemperature": {
-              "title": "Data point (Target temperature)",
-              "type": "integer",
-              "placeholder": "2",
-              "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
-              }
-            },
             "dpCurrentTemperature": {
               "title": "Data point (Current temperature)",
               "type": "integer",
               "placeholder": "3",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+              }
+            },
+            "dpDesiredTemperature": {
+              "title": "Data point (Target temperature)",
+              "type": "integer",
+              "placeholder": "2",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
               }
@@ -452,18 +442,28 @@
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
               }
             },
-            "noChildLock": {
-              "title": "No child lock",
-              "type": "boolean",
+            "minTemperature": {
+              "title": "Temperature (Min.)",
+              "type": "integer",
+              "placeholder": "15",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner', 'Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
               }
             },
-            "noTemperatureUnit": {
-              "title": "No temperature",
-              "type": "boolean",
+            "maxTemperature": {
+              "title": "Temperature (Max.)",
+              "type": "integer",
+              "placeholder": "40",
               "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner', 'Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+              }
+            },
+            "minTemperatureSteps": {
+              "title": "Temperature step (Min.)",
+              "type": "integer",
+              "placeholder": "1",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
               }
             },
             "temperatureDivisor": {
@@ -488,6 +488,13 @@
               "placeholder": "1",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+              }
+            },
+            "flipState": {
+              "title": "Flip state",
+              "type": "boolean",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && ['GarageDoor', 'SimpleBlinds', 'SimpleBlinds2'].includes(model.devices[arrayIndices].type);"
               }
             },
             "dpAction": {
@@ -528,13 +535,6 @@
               "placeholder": "Stop",
               "condition": {
                 "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds', 'SimpleBlinds2'].includes(model.devices[arrayIndices].type);"
-              }
-            },
-            "flipState": {
-              "title": "Flip state",
-              "type": "boolean",
-              "condition": {
-                "functionBody": "return model.devices && model.devices[arrayIndices] && ['GarageDoor', 'SimpleBlinds', 'SimpleBlinds2'].includes(model.devices[arrayIndices].type);"
               }
             },
             "timeToOpen": {
