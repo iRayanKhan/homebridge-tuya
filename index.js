@@ -41,7 +41,7 @@ const CLASS_DEF = {
     convector: ConvectorAccessory,
     garagedoor: GarageDoorAccessory,
     simpledimmer: SimpleDimmerAccessory,
-    simpledimmer2: SimpleDimmer2Accessory,    
+    simpledimmer2: SimpleDimmer2Accessory,
     simpleblinds: SimpleBlindsAccessory,
     simpleblinds2: SimpleBlinds2Accessory,
     simpleheater: SimpleHeaterAccessory,
@@ -54,10 +54,10 @@ const CLASS_DEF = {
 
 let Characteristic, PlatformAccessory, Service, Categories, AdaptiveLightingController, UUID;
 
-module.exports = function(homebridge) {
+module.exports = function (homebridge) {
     ({
         platformAccessory: PlatformAccessory,
-        hap: {Characteristic, Service, AdaptiveLightingController, Accessory: {Categories}, uuid: UUID}
+        hap: { Characteristic, Service, AdaptiveLightingController, Accessory: { Categories }, uuid: UUID }
     } = homebridge);
 
     homebridge.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, TuyaLan, true);
@@ -70,12 +70,12 @@ class TuyaLan {
         this.cachedAccessories = new Map();
         this.api.hap.EnergyCharacteristics = require('./lib/EnergyCharacteristics')(this.api.hap.Characteristic);
 
-        if(!this.config || !this.config.devices) {
+        if (!this.config || !this.config.devices) {
             this.log("No devices found. Check that you have specified them in your config.json file.");
             return false;
         }
 
-        this._expectedUUIDs = this.config.devices.map(device => UUID.generate(PLUGIN_NAME +(device.fake ? ':fake:' : ':') + device.id));
+        this._expectedUUIDs = this.config.devices.map(device => UUID.generate(PLUGIN_NAME + (device.fake ? ':fake:' : ':') + device.id));
 
         this.api.on('didFinishLaunching', () => {
             this.discoverDevices();
@@ -93,16 +93,16 @@ class TuyaLan {
                 device.type = ('' + device.type).trim();
 
                 device.ip = ('' + (device.ip || '')).trim();
-            } catch(ex) {}
+            } catch (ex) { }
 
             //if (!/^[0-9a-f]+$/i.test(device.id)) return this.log.error('%s, id for %s, is not a valid id.', device.id, device.name || 'unnamed device');
             if (!/^[0-9a-f]+$/i.test(device.key)) return this.log.error('%s, key for %s (%s), is not a valid key.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
-            if (!{16:1, 24:1, 32: 1}[device.key.length]) return this.log.error('%s, key for %s (%s), doesn\'t have the expected length.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
+            if (!{ 16: 1, 24: 1, 32: 1 }[device.key.length]) return this.log.error('%s, key for %s (%s), doesn\'t have the expected length.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
             if (!device.type) return this.log.error('%s (%s) doesn\'t have a type defined.', device.name || 'Unnamed device', device.id);
             if (!CLASS_DEF[device.type.toLowerCase()]) return this.log.error('%s (%s) doesn\'t have a valid type defined.', device.name || 'Unnamed device', device.id);
 
-            if (device.fake) fakeDevices.push({name: device.id.slice(8), ...device});
-            else devices[device.id] = {name: device.id.slice(8), ...device};
+            if (device.fake) fakeDevices.push({ name: device.id.slice(8), ...device });
+            else devices[device.id] = { name: device.id.slice(8), ...device };
         });
 
         const deviceIds = Object.keys(devices);
@@ -110,7 +110,7 @@ class TuyaLan {
 
         this.log.info('Starting discovery...');
 
-        TuyaDiscovery.start({ids: deviceIds})
+        TuyaDiscovery.start({ ids: deviceIds })
             .on('discover', config => {
                 if (!config || !config.id) return;
                 if (!devices[config.id]) return this.log.warn('Discovered a device that has not been configured yet (%s@%s).', config.id, config.ip);
