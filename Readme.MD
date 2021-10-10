@@ -28,6 +28,9 @@ Control your supported Tuya accessories locally in HomeKit
 * [Donating](#donating)
 
 ## Supported Device Types
+
+NOTE: this plugin (and all other Tuya plugins at the moment) does NOT support bluetooth devices connected via a BLE mesh gateway / hub. Follow [#164](https://github.com/iRayanKhan/homebridge-tuya/issues/164) or [this issue](https://github.com/tuya/tuya-homebridge/issues/119) for updates. As a workaround, you can create a Scene within Tuya / Smart Life app, e.g. "Close the curtains", and expose this scene to HomeKit via Tuya Web plugin, see [Adding Scenes](https://github.com/milo526/homebridge-tuya-web#add-all-scenes-to-homekit) for details. This will allow native Homekit automation and control of your hub-connected Tuya devices.
+
 > Click the number next to your device to find the possible DataPoint "DP" values, then add as needed to your config.
 
 * Air Conditioner<sup>[1](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types#air-conditioners)</sup> 
