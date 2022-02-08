@@ -7,6 +7,7 @@
 
 Control your supported Tuya accessories locally in HomeKit
 
+* [Why This Fork?](#why-this-fork-exists)
 * [Supported Device Types](#supported-device-types)
 * [Installation Instructions](#installation-instructions)
 * [Configuration](#configuration)
@@ -14,6 +15,22 @@ Control your supported Tuya accessories locally in HomeKit
 * [Troubleshooting](#troubleshooting)
 * [Credits](#credits)
 * [License](#license)
+
+## Why This Fork Exists
+
+We recently bought a new house that comes with a WiFi thermostat which controls the electric floor heating in our bathroom. The make and model of which are [Magnum MRC Remote control]( https://www.magnumheating.com/products/58-1-electrical+systems/p-303-magnum+remote+control) which is supported by an OEM white label Tuya application. Unfortunately this app does not directly integrate with HomeKit, therefore a Homebridge plugin was required. The current version of the plugin that this fork is based of [homebridge-tuya](https://github.com/iRayanKhan/homebridge-tuya) does not provide support for thermostat devices where custom names are provided to select specific heating schedules. In the case of our thermostat,  **AUTO** runs the regular schedule, and **MANUAL**, **FROST** or **HOLIDAY** should be used to deviate from the regular programming.
+
+This plugin aims to solve this need by splitting out the operational state of the thermostat (heating vs. idle), and the currently active heating mode (schedule vs. override), and provides the option to use the devices own enumerations for each operating state
+
+For our specific device [MRC Remote control](https://www.magnumheating.com/products/58-1-electrical+systems/p-303-magnum+remote+control) these are the required settings:
+
+| Function | Name in config | DP | Possible Values |
+| --- | --- | --- | --- |
+| Heating indicator | dpActive | 118 | "warming" (corresponds to idle) / "heating" (corresponds to heating) |
+| Program status | dpProgramState | 103 | "AUTO" / "MANUAL" / "FROST" / "HOLIDAY" |
+| Desired temperature | dpDesiredTemperature | 102 | temperature multiplied by 10 |
+| Current temperature | dpCurrentTemperature | 106 | temperature multiplied by 10 |
+
 
 ## Supported Device Types
 > Click the number next to your device to find the possible DataPoint "DP" values, then add as needed to your config.
