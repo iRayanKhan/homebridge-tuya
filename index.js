@@ -18,6 +18,7 @@ const SimpleDimmer2Accessory = require('./lib/SimpleDimmer2Accessory');
 const SimpleBlindsAccessory = require('./lib/SimpleBlindsAccessory');
 const SimpleBlinds2Accessory = require('./lib/SimpleBlinds2Accessory');
 const SimpleHeaterAccessory = require('./lib/SimpleHeaterAccessory');
+const SimpleThermostatAccessory = require('./lib/SimpleThermostatAccessory');
 const SimpleFanAccessory = require('./lib/SimpleFanAccessory');
 const SimpleFanLightAccessory = require('./lib/SimpleFanLightAccessory');
 const SwitchAccessory = require('./lib/SwitchAccessory');
@@ -45,6 +46,7 @@ const CLASS_DEF = {
     simpleblinds: SimpleBlindsAccessory,
     simpleblinds2: SimpleBlinds2Accessory,
     simpleheater: SimpleHeaterAccessory,
+    simplethermostat: SimpleThermostatAccessory,
     switch: SwitchAccessory,
     fan: SimpleFanAccessory,
     fanlight: SimpleFanLightAccessory,

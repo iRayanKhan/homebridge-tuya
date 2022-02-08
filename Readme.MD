@@ -1,19 +1,8 @@
-<p align="center">
-    <img src="https://github.com/iRayanKhan/Assets-Repo/blob/master/Tuya-Plugin-Branding.png?raw=true" height="100"><br>
-</p>
-
-
 <span align="center">
 
 # Homebridge-Tuya
 
-[![npm](https://img.shields.io/npm/v/homebridge-tuya.svg)](https://www.npmjs.com/package/homebridge-tuya)
-[![npm](https://img.shields.io/npm/dt/homebridge-tuya.svg)](https://www.npmjs.com/package/homebridge-tuya)
-[![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
-
-
 </span>
-
 
 
 Control your supported Tuya accessories locally in HomeKit
@@ -25,7 +14,6 @@ Control your supported Tuya accessories locally in HomeKit
 * [Troubleshooting](#troubleshooting)
 * [Credits](#credits)
 * [License](#license)
-* [Donating](#donating)
 
 ## Supported Device Types
 > Click the number next to your device to find the possible DataPoint "DP" values, then add as needed to your config.
@@ -46,6 +34,7 @@ Control your supported Tuya accessories locally in HomeKit
 * Oil Diffusers<sup>[13](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types)</sup>
 * Outlets<sup>[14](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types#outlets)</sup>
 * Switches<sup>[15](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types)</sup>
+* Thermostats (added in this fork)
 
 Note: Motion, and other sensor types don't behave well with responce requests, so they will not be added. 
 
@@ -54,21 +43,25 @@ Note: Motion, and other sensor types don't behave well with responce requests, s
 
 #### Option 1: Install via Homebridge Config UI X:
 
-Search for "Tuya" in [homebridge-config-ui-x](https://github.com/oznu/homebridge-config-ui-x) and install `homebridge-tuya`.
+1. Search for "Tuya" in [homebridge-config-ui-x](https://github.com/oznu/homebridge-config-ui-x) and install `homebridge-tuya`.
+2. Overwrite the **./index.js**, **./lib/SimpleThermostatAccessory** and **./config.schema.json**
 
 #### Option 2: Manually Install:
 
+1. Run the following npm command:
 ```
 sudo npm install -g homebridge-tuya
 ```
+2. Overwrite the **./index.js**, **./lib/SimpleThermostatAccessory** and **./config.schema.json**
+
 
 ## Configuration
 > UI
 
 1. Navigate to the Plugins page in [homebridge-config-ui-x](https://github.com/oznu/homebridge-config-ui-x).
 2. Click the **Settings** button for the Tuya plugin.
-3. Add your device types
-4. Add device parameters<sup>[10](apple.com/)</sup>
+3. Add your device types.
+4. Add device parameters.
 5. Restart Homebridge for the changes to take effect.
 
 > Manual
@@ -92,15 +85,10 @@ If you have new accessory logic for a new device, please add a function defined 
 
 ## Credits
 
-* [AMoo-Miki](https://github.com/AMoo-Miki) - developer of the [Tuya-Lan](https://github.com/AMoo-Miki/homebridge-tuya-lan) plugin which this plugin is based off. 
+* [AMoo-Miki](https://github.com/AMoo-Miki) - developer of the [Tuya-Lan](https://github.com/AMoo-Miki/homebridge-tuya-lan) plugin which this plugin is based off.
+* [iRayanKhan](https://github.com/iRayanKhan) - developer of the [homebridge-tuya](https://github.com/iRayanKhan/homebridge-tuya) plugin which this is a fork off.
 * mxDanger - Plugin branding.
 * [CodeTheWeb](https://github.com/CodeTheWeb) - developer of [TuyaApi](https://github.com/codetheweb/tuyapi), who gratiously provided this repo's name.
 * [Oznu](https://github.com/oznu) - developer of Homebridge, added ```config.schema.json``` , fixed dependencies, and helped inspire this readME off his [gsh](https://github.com/oznu/homebridge-gsh) plugin.
 
 ## License
-
-
-
-## Donating
-
-Please donate to a local pet shelter, or food pantry. It's been a wild time, but we can do our part by helping others. 

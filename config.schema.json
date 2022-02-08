@@ -85,6 +85,12 @@
                     ]
                   },
                   {
+                    "title": "Simple Thermostat",
+                    "enum": [
+                      "SimpleThermostat"
+                    ]
+                  },
+                  {
                     "title": "Garage Door",
                     "enum": [
                       "GarageDoor"
@@ -321,14 +327,14 @@
                 "type": "integer",
                 "placeholder": "15",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner','Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner','Convector', 'SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "maxTemperature": {
                 "type": "integer",
                 "placeholder": "40",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner','Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner','Convector', 'SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "minTemperatureSteps": {
@@ -340,23 +346,64 @@
               },
               "dpActive": {
                 "type": "integer",
-                "placeholder": "7",
+                "placeholder": "118",
+                "description": "DP that shows whether the thermostat is requesting heating or idle.",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpProgramState": {
+                "type": "integer",
+                "placeholder": "103",
+                "description": "DP that shows what program the thermostat is in.",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "heatingIndicatorOff": {
+                "type": "string",
+                "placeholder": "warming",
+                "description": "Value of dpActive that shows its idleing",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "heatingIndicatorOn": {
+                "type": "string",
+                "placeholder": "heating",
+                "description": "Value of dpActive that shows its requesting heat",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "scheduledHeatingOff": {
+                "type": "string",
+                "placeholder": "FROST",
+                "description": "Value of dpProgramState that shows that the schedule has been turned off",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "scheduledHeatingOn": {
+                "type": "string",
+                "placeholder": "AUTO",
+                "description": "Value of dpProgramState that shows that the schedule has been turned on",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpDesiredTemperature": {
                 "type": "integer",
                 "placeholder": "2",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpCurrentTemperature": {
                 "type": "integer",
                 "placeholder": "3",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpRotationSpeed": {
@@ -410,21 +457,21 @@
                 "type": "integer",
                 "placeholder": "1",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "thresholdTemperatureDivisor": {
                 "type": "integer",
                 "placeholder": "1",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "targetTemperatureDivisor": {
                 "type": "integer",
                 "placeholder": "1",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpAction": {
