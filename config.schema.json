@@ -341,7 +341,7 @@
                 "type": "integer",
                 "placeholder": "1",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['AirConditioner', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpActive": {
