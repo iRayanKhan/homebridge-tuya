@@ -352,20 +352,20 @@
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
-              "dpProgramState": {
-                "type": "integer",
-                "placeholder": "103",
-                "description": "DP that shows what program the thermostat is in.",
+              "dpActiveNotBoolean": {
+                "type": "boolean",
+                "placeholder": false,
+                "description": "Check this if dpActive uses a string value to determine the operating mode (heating/idle) instead of a boolean.",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "heatingIndicatorOff": {
                 "type": "string",
                 "placeholder": "warming",
-                "description": "Value of dpActive that shows its idleing",
+                "description": "Value of dpActive that shows its idling",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices].dpActiveNotBoolean === true && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "heatingIndicatorOn": {
@@ -373,7 +373,23 @@
                 "placeholder": "heating",
                 "description": "Value of dpActive that shows its requesting heat",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices].dpActiveNotBoolean === true && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpProgramState": {
+                "type": "integer",
+                "placeholder": "103",
+                "description": "DP that shows if the thermostat is off or on. It can also be based on the currently active scheduled program. E.g. if the thermostat is in FROST or HOLIDAY (no heating according to schedule) it is Off, whereas if the program is AUTO, is it 'On').",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpProgramStateNotBoolean": {
+                "type": "boolean",
+                "placeholder": false,
+                "description": "Check this if dpProgramState uses a string value to determine whether the thermostat is off or on (FROST/AUTO/MANUAL) instead of a boolean.",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "scheduledHeatingOff": {
@@ -381,7 +397,7 @@
                 "placeholder": "FROST",
                 "description": "Value of dpProgramState that shows that the schedule has been turned off",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices].dpProgramStateNotBoolean === true && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "scheduledHeatingOn": {
@@ -389,7 +405,7 @@
                 "placeholder": "AUTO",
                 "description": "Value of dpProgramState that shows that the schedule has been turned on",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices].dpProgramStateNotBoolean === true && model.devices[arrayIndices] && ['SimpleHeater', 'SimpleThermostat'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpDesiredTemperature": {
