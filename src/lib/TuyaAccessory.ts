@@ -1,16 +1,18 @@
-const net = require('net');
-const async = require('async');
-const crypto = require('crypto');
-const EventEmitter = require('events');
+import net from 'net';
+import async from 'async';
+import crypto from 'crypto';
+import EventEmitter from 'events';
 
-const isNonEmptyPlainObject = o => {
+const isNonEmptyPlainObject = (o: object) => {
     if (!o) return false;
     for (let i in o) return true;
     return false;
 };
 
-class TuyaAccessory extends EventEmitter {
-    constructor(props) {
+export class TuyaAccessory extends EventEmitter {
+    private _socket: net.Socket | undefined;
+
+    constructor(props: any) {
         super();
 
         if (!(props.id && props.key && props.ip) && !props.fake) return console.log('[Tuya] Insufficient details to initialize:', props);
@@ -42,7 +44,7 @@ class TuyaAccessory extends EventEmitter {
             }, 1000);
         }
 
-        this._socket = net.Socket();
+        this._socket = new net.Socket();
 
         this._incrementAttemptCounter();
 
@@ -498,20 +500,19 @@ class TuyaAccessory extends EventEmitter {
     }
 }
 
-const crc32LookupTable = [];
+const crc32LookupTable = 
 (() => {
+    const crc32LookupTable: number[] = [];
     for (let i = 0; i < 256; i++) {
         let crc = i;
         for (let j = 8; j > 0; j--) crc = (crc & 1) ? (crc >>> 1) ^ 3988292384 : crc >>> 1;
         crc32LookupTable.push(crc);
     }
+    return crc32LookupTable;
 })();
 
-const getCRC32 = buffer => {
+const getCRC32 = (buffer: Buffer) => {
     let crc = 0xffffffff;
     for (let i = 0, len = buffer.length; i < len; i++) crc = crc32LookupTable[buffer[i] ^ (crc & 0xff)] ^ (crc >>> 8);
     return ~crc;
 };
-
-
-module.exports = TuyaAccessory;
