@@ -46,6 +46,9 @@
     "node": ">=8.6.0"
   },
   "devDependencies": {
+    "@types/async": "^3.2.15",
+    "@types/node": "^18.11.9",
+    "homebridge": "^1.5.1",
     "rimraf": "^3.0.2"
   }
 }
