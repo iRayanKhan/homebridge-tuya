@@ -1,43 +1,28 @@
-import {
-    API,
-    APIEvent,
-    CharacteristicEventTypes,
-    CharacteristicSetCallback,
-    CharacteristicValue,
-    DynamicPlatformPlugin,
-    HAP,
-    Logging,
-    PlatformAccessory,
-    PlatformAccessoryEvent,
-    PlatformConfig,
-  } from "homebridge";
-  
+const TuyaAccessory = require('./lib/TuyaAccessory');
+const TuyaDiscovery = require('./lib/TuyaDiscovery');
 
-import {TuyaAccessory} from './lib/TuyaAccessory';
-import TuyaDiscovery from './lib/TuyaDiscovery';
-
-import OutletAccessory from './lib/OutletAccessory';
-import SimpleLightAccessory from './lib/SimpleLightAccessory';
-import MultiOutletAccessory from './lib/MultiOutletAccessory';
-import CustomMultiOutletAccessory from './lib/CustomMultiOutletAccessory';
-import RGBTWLightAccessory from './lib/RGBTWLightAccessory';
-import RGBTWOutletAccessory from './lib/RGBTWOutletAccessory';
-import TWLightAccessory from './lib/TWLightAccessory';
-import AirConditionerAccessory from './lib/AirConditionerAccessory';
-import AirPurifierAccessory from './lib/AirPurifierAccessory';
-import DehumidifierAccessory from './lib/DehumidifierAccessory';
-import ConvectorAccessory from './lib/ConvectorAccessory';
-import GarageDoorAccessory from './lib/GarageDoorAccessory';
-import SimpleDimmerAccessory from './lib/SimpleDimmerAccessory';
-import SimpleDimmer2Accessory from './lib/SimpleDimmer2Accessory';
-import SimpleBlindsAccessory from './lib/SimpleBlindsAccessory';
-import SimpleBlinds2Accessory from './lib/SimpleBlinds2Accessory';
-import SimpleHeaterAccessory from './lib/SimpleHeaterAccessory';
-import SimpleFanAccessory from './lib/SimpleFanAccessory';
-import SimpleFanLightAccessory from './lib/SimpleFanLightAccessory';
-import SwitchAccessory from './lib/SwitchAccessory';
-import ValveAccessory from './lib/ValveAccessory';
-import OilDiffuserAccessory from './lib/OilDiffuserAccessory';
+const OutletAccessory = require('./lib/OutletAccessory');
+const SimpleLightAccessory = require('./lib/SimpleLightAccessory');
+const MultiOutletAccessory = require('./lib/MultiOutletAccessory');
+const CustomMultiOutletAccessory = require('./lib/CustomMultiOutletAccessory');
+const RGBTWLightAccessory = require('./lib/RGBTWLightAccessory');
+const RGBTWOutletAccessory = require('./lib/RGBTWOutletAccessory');
+const TWLightAccessory = require('./lib/TWLightAccessory');
+const AirConditionerAccessory = require('./lib/AirConditionerAccessory');
+const AirPurifierAccessory = require('./lib/AirPurifierAccessory');
+const DehumidifierAccessory = require('./lib/DehumidifierAccessory');
+const ConvectorAccessory = require('./lib/ConvectorAccessory');
+const GarageDoorAccessory = require('./lib/GarageDoorAccessory');
+const SimpleDimmerAccessory = require('./lib/SimpleDimmerAccessory');
+const SimpleDimmer2Accessory = require('./lib/SimpleDimmer2Accessory');
+const SimpleBlindsAccessory = require('./lib/SimpleBlindsAccessory');
+const SimpleBlinds2Accessory = require('./lib/SimpleBlinds2Accessory');
+const SimpleHeaterAccessory = require('./lib/SimpleHeaterAccessory');
+const SimpleFanAccessory = require('./lib/SimpleFanAccessory');
+const SimpleFanLightAccessory = require('./lib/SimpleFanLightAccessory');
+const SwitchAccessory = require('./lib/SwitchAccessory');
+const ValveAccessory = require('./lib/ValveAccessory');
+const OilDiffuserAccessory = require('./lib/OilDiffuserAccessory');
 
 const PLUGIN_NAME = 'homebridge-tuya-lan';
 const PLATFORM_NAME = 'TuyaLan';
@@ -65,64 +50,32 @@ const CLASS_DEF = {
     fanlight: SimpleFanLightAccessory,
     watervalve: ValveAccessory,
     oildiffuser: OilDiffuserAccessory
-} as const;
-
-let hap: HAP;
-let Accessory: typeof PlatformAccessory;
-
-export = (api: API) => {
-  hap = api.hap;
-  Accessory = api.platformAccessory;
-
-  api.registerPlatform(PLATFORM_NAME, TuyaLan);
 };
 
+let Characteristic, PlatformAccessory, Service, Categories, AdaptiveLightingController, UUID;
 
-// let Characteristic, PlatformAccessory, Service, Categories, AdaptiveLightingController, UUID;
+module.exports = function(homebridge) {
+    ({
+        platformAccessory: PlatformAccessory,
+        hap: {Characteristic, Service, AdaptiveLightingController, Accessory: {Categories}, uuid: UUID}
+    } = homebridge);
 
-// module.exports = function(homebridge) {
-//     ({
-//         platformAccessory: PlatformAccessory,
-//         hap: {Characteristic, Service, AdaptiveLightingController, Accessory: {Categories}, uuid: UUID}
-//     } = homebridge);
-
-//     homebridge.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, TuyaLan, true);
-// };
-
-type TuyaLanConfig = PlatformConfig & {
-    devices: {
-        id: string;
-        key: string;
-        type: string;
-        name?: string;
-        ip?: string;
-        fake?: boolean;
-    }[];
+    homebridge.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, TuyaLan, true);
 };
 
-class TuyaLan implements DynamicPlatformPlugin {
-    private readonly log: Logging;
-    private readonly api: API;
-
-    private config: TuyaLanConfig;
-    private cachedAccessories: Map<string, PlatformAccessory>;
-    private _expectedUUIDs: string[];
-
-    constructor(log: Logging, config: PlatformConfig, api: API) {
-        this.log = log;
-        this.config = config as TuyaLanConfig;
-        this.api = api;
+class TuyaLan {
+    constructor(...props) {
+        [this.log, this.config, this.api] = [...props];
 
         this.cachedAccessories = new Map();
-        // todo: fix type
-        (this.api.hap as any).EnergyCharacteristics = require('./lib/EnergyCharacteristics')(this.api.hap.Characteristic);
+        this.api.hap.EnergyCharacteristics = require('./lib/EnergyCharacteristics')(this.api.hap.Characteristic);
 
         if(!this.config || !this.config.devices) {
             this.log("No devices found. Check that you have specified them in your config.json file.");
-            throw new Error();
+            return false;
         }
 
-        this._expectedUUIDs = this.config.devices.map(device => this.api.hap.uuid.generate(PLUGIN_NAME +(device.fake ? ':fake:' : ':') + device.id));
+        this._expectedUUIDs = this.config.devices.map(device => UUID.generate(PLUGIN_NAME +(device.fake ? ':fake:' : ':') + device.id));
 
         this.api.on('didFinishLaunching', () => {
             this.discoverDevices();
@@ -130,10 +83,9 @@ class TuyaLan implements DynamicPlatformPlugin {
     }
 
     discoverDevices() {
-        const devices: Record<string, any> = {};
-        const connectedDevices: string[] = [];
-        // todo: fix type
-        const fakeDevices: any[] = [];
+        const devices = {};
+        const connectedDevices = [];
+        const fakeDevices = [];
         this.config.devices.forEach(device => {
             try {
                 device.id = ('' + device.id).trim();
@@ -147,7 +99,7 @@ class TuyaLan implements DynamicPlatformPlugin {
             if (!/^[0-9a-f]+$/i.test(device.key)) return this.log.error('%s, key for %s (%s), is not a valid key.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
             if (!{16:1, 24:1, 32: 1}[device.key.length]) return this.log.error('%s, key for %s (%s), doesn\'t have the expected length.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
             if (!device.type) return this.log.error('%s (%s) doesn\'t have a type defined.', device.name || 'Unnamed device', device.id);
-            if (!Object.keys(CLASS_DEF).includes(device.type.toLowerCase())) return this.log.error('%s (%s) doesn\'t have a valid type defined.', device.name || 'Unnamed device', device.id);
+            if (!CLASS_DEF[device.type.toLowerCase()]) return this.log.error('%s (%s) doesn\'t have a valid type defined.', device.name || 'Unnamed device', device.id);
 
             if (device.fake) fakeDevices.push({name: device.id.slice(8), ...device});
             else devices[device.id] = {name: device.id.slice(8), ...device};
