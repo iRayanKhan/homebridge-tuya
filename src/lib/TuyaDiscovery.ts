@@ -5,7 +5,7 @@ import EventEmitter from 'events';
 const UDP_KEY = Buffer.from('6c1ec8e2bb9bb59ab50b0daf649b410a', 'hex');
 
 class TuyaDiscovery extends EventEmitter {
-    private discovered: Map<string, any>; // TODO fix type
+    private discovered: Map<string, string>;
     private limitedIds: string[];
     private _servers: { [port: number]: dgram.Socket };
     private _running: boolean;
