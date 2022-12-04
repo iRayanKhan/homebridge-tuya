@@ -173,19 +173,26 @@ class TuyaDiscovery extends EventEmitter {
         }
     }
 
-    _onDiscover(data: any) {
+    _onDiscover(data: TuyaUdpPayload) {
         if (this.discovered.has(data.gwId)) return;
 
-        data.id = data.gwId;
-        delete data.gwId;
+        const devicePayload: DiscoverPayload = {
+            id: data.gwId,
+            ip: data.ip,
+            active: data.active,
+            ability: data.ability,
+            encrypt: data.encrypt,
+            productKey: data.productKey,
+            version: data.version,
+        };
 
-        this.discovered.set(data.id, data.ip);
+        this.discovered.set(devicePayload.id, devicePayload.ip);
 
-        this.emit('discover', data);
+        this.emit('discover', devicePayload);
 
         if (
             this.limitedIds.length &&
-            this.limitedIds.includes(data.id) && // Just to avoid checking the rest unnecessarily
+            this.limitedIds.includes(devicePayload.id) && // Just to avoid checking the rest unnecessarily
             this.limitedIds.length <= this.discovered.size &&
             this.limitedIds.every((id) => this.discovered.has(id))
         ) {
@@ -195,5 +202,25 @@ class TuyaDiscovery extends EventEmitter {
         }
     }
 }
+
+type TuyaUdpPayload = {
+    ip: string;
+    gwId: string;
+    active: number;
+    ability: number;
+    encrypt: boolean;
+    productKey: string;
+    version: string;
+};
+
+export type DiscoverPayload = {
+    id: string;
+    ip: string;
+    active: number; // not sure if all of these are used
+    ability: number; // not sure if all of these are used
+    encrypt: boolean; // not sure if all of these are used
+    productKey: string; // not sure if all of these are used
+    version: string;
+};
 
 module.exports = new TuyaDiscovery();
