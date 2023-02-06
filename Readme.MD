@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/iRayanKhan/homebridge-tuya/assets/Tuya-Plugin-Branding.png?raw=true" height="100"><br>
+    <img src="https://raw.githubusercontent.com/iRayanKhan/homebridge-tuya/main/assets/Tuya-Plugin-Branding.png" height="100"><br>
 </p>
 
 
