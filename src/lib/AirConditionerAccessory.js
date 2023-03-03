@@ -429,7 +429,7 @@ class AirConditionerAccessory extends BaseAccessory {
             this.setActive(Characteristic.Active.INACTIVE, callback);
         } else {
             this._hkRotationSpeed = value;
-            this.setMultiState({this.dpActive: true, this.dpRotationSpeed: this.convertRotationSpeedFromHomeKitToTuya(value)}, callback);
+            this.setMultiState({[this.dpActive]: true, [this.dpRotationSpeed]: this.convertRotationSpeedFromHomeKitToTuya(value)}, callback);
         }
     }
 

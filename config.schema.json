@@ -97,12 +97,6 @@
                     ]
                   },
                   {
-                    "title": "Simple Blinds2",
-                    "enum": [
-                      "Simple Blinds2"
-                    ]
-                  },
-                  {
                     "title": "Smart Plug w/ White and Color Lights",
                     "enum": [
                       "RGBTWOutlet"

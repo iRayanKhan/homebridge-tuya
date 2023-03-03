@@ -1,11 +1,13 @@
 {
   "name": "homebridge-tuya",
-
   "version": "3.0.0-beta.2",
-
   "description": "🏠 Offical Homebridge plugin for TuyAPI ",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "rimraf ./dist && tsc",
+    "prepublishOnly": "npm run build",
+    "postpublish": "npm run clean",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -30,6 +32,7 @@
     "http-mitm-proxy": "^0.8.1",
     "json5": "^2.1.0",
     "qrcode": "^1.4.1",
+    "typescript": "^4.9.3",
     "yaml": "^1.6.0"
   },
   "keywords": [
@@ -41,5 +44,11 @@
   "engines": {
     "homebridge": ">=0.4.0",
     "node": ">=8.6.0"
+  },
+  "devDependencies": {
+    "@types/async": "^3.2.15",
+    "@types/node": "^18.11.9",
+    "homebridge": "^1.5.1",
+    "rimraf": "^3.0.2"
   }
 }
