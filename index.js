@@ -17,6 +17,7 @@ const SimpleDimmerAccessory = require('./lib/SimpleDimmerAccessory');
 const SimpleDimmer2Accessory = require('./lib/SimpleDimmer2Accessory');
 const SimpleBlindsAccessory = require('./lib/SimpleBlindsAccessory');
 const SimpleBlinds2Accessory = require('./lib/SimpleBlinds2Accessory');
+const SimpleBlinds3Accessory = require('./lib/SimpleBlinds3Accessory');
 const SimpleHeaterAccessory = require('./lib/SimpleHeaterAccessory');
 const SimpleFanAccessory = require('./lib/SimpleFanAccessory');
 const SimpleFanLightAccessory = require('./lib/SimpleFanLightAccessory');
@@ -44,6 +45,7 @@ const CLASS_DEF = {
     simpledimmer2: SimpleDimmer2Accessory,    
     simpleblinds: SimpleBlindsAccessory,
     simpleblinds2: SimpleBlinds2Accessory,
+    simpleblinds3: SimpleBlinds3Accessory,
     simpleheater: SimpleHeaterAccessory,
     switch: SwitchAccessory,
     fan: SimpleFanAccessory,
@@ -240,3 +242,4 @@ class TuyaLan {
         if (uuid) this.removeAccessory(this.cachedAccessories.get(uuid));
     }
 }
+
