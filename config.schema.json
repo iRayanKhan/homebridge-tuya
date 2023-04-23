@@ -99,7 +99,13 @@
                   {
                     "title": "Simple Blinds2",
                     "enum": [
-                      "Simple Blinds2"
+                      "SimpleBlinds2"
+                    ]
+                  },
+                  {
+                    "title": "Simple Blinds3",
+                    "enum": [
+                      "SimpleBlinds3"
                     ]
                   },
                   {
