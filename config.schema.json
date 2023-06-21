@@ -366,6 +366,22 @@
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
                 }
               },
+              "dpHeatingCapacity": {
+                "type": "integer",
+                "placeholder": "",
+                "description": "If your heater doesn't have a heating capacity, leave this empty.",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpHeatingCapacityIdleValue": {
+                "type": "integer",
+                "placeholder": "0",
+                "description": "Value of heating capacity when the heater is idle.",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
               "dpChildLock": {
                 "type": "integer",
                 "placeholder": "6",
