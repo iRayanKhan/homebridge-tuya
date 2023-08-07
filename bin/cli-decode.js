@@ -37,7 +37,7 @@ const getCRC32 = buffer => {
 
 const checkKey = key => {
     if (!key) return false;
-    if (!/^[a-zA-Z0-9~`!@#$%^&*()+={}\[\];:\'\"<>.,\/\\\?-_]+$/i.test(key)) {
+    if (!/^[a-zA-Z0-9~`!@#$%^&*()+={}\[\];:\'\"<>.,\/\\\?_-]+$/i.test(key)) {
         console.log('*** The key contains invalid characters; try again.');
         return false;
     }
