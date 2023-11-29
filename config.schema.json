@@ -25,6 +25,12 @@
                     ]
                   },
                   { 
+                    "title": "Security System / Alarm",
+                    "enum": [
+                      "SecuritySystem"
+                      ]
+                  },
+                  { 
                     "title": "Smart Plug / Barely Smart Power Strip",
                     "enum": [
                       "Outlet"
@@ -229,7 +235,31 @@
                 "type": "integer",
                 "placeholder": "2",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet', 'SecuritySystem'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpSecuritySetMode": {
+                "type": "integer",
+                "description": "Used to set the current System mode: Home, Away, Disarm",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SecuritySystem'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpSecurityTargetMode": {
+                "type": "integer",
+                "description": "Used to get the target Security System mode: Home, Away, Disarm, Triggered",
+                "placeholder": "32",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SecuritySystem'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpBatteryLevel": {
+                "type": "integer",
+                "description": "Used to get the current battery level",
+                "placeholder": "32",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SecuritySystem'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpColor": {
