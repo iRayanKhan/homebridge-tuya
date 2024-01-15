@@ -35,21 +35,6 @@ const getCRC32 = buffer => {
     return ~crc;
 };
 
-const checkKey = key => {
-    if (!key) return false;
-    if (!/^[0-9a-f]+$/i.test(key)) {
-        console.log('*** The key contains invalid characters; try again.');
-        return false;
-    }
-
-    if (!{16:1, 24:1, 32: 1}[key.length]) {
-        console.log('*** The key contains the wrong number of characters; try again.');
-        return false;
-    }
-
-    return true;
-};
-
 const decodeLine = (key, input, log = true) => {
     const encoding = (input.substr(0, 8) === '000055aa') ? 'hex' : 'base64';
 
@@ -140,7 +125,7 @@ const decodeLine = (key, input, log = true) => {
 
 async.auto({
     Key: next => {
-        if (program.key && checkKey(program.key)) return next(null, program.key);
+        if (program.key) return next(null, program.key);
 
         const rl = readline.createInterface({
             input: process.stdin,
@@ -153,7 +138,7 @@ async.auto({
 
         rl.on('line', line => {
             const input = line.trim();
-            if (!checkKey(input)) return rl.prompt();
+            if (!input) return rl.prompt();
 
             rl.close();
             next(null, input);
@@ -210,4 +195,3 @@ async.auto({
         });
     }]
 });
-

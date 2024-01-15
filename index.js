@@ -16,7 +16,6 @@ const GarageDoorAccessory = require('./lib/GarageDoorAccessory');
 const SimpleDimmerAccessory = require('./lib/SimpleDimmerAccessory');
 const SimpleDimmer2Accessory = require('./lib/SimpleDimmer2Accessory');
 const SimpleBlindsAccessory = require('./lib/SimpleBlindsAccessory');
-const SimpleBlinds2Accessory = require('./lib/SimpleBlinds2Accessory');
 const SimpleHeaterAccessory = require('./lib/SimpleHeaterAccessory');
 const SimpleFanAccessory = require('./lib/SimpleFanAccessory');
 const SimpleFanLightAccessory = require('./lib/SimpleFanLightAccessory');
@@ -41,9 +40,8 @@ const CLASS_DEF = {
     convector: ConvectorAccessory,
     garagedoor: GarageDoorAccessory,
     simpledimmer: SimpleDimmerAccessory,
-    simpledimmer2: SimpleDimmer2Accessory,    
+    simpledimmer2: SimpleDimmer2Accessory,
     simpleblinds: SimpleBlindsAccessory,
-    simpleblinds2: SimpleBlinds2Accessory,
     simpleheater: SimpleHeaterAccessory,
     switch: SwitchAccessory,
     fan: SimpleFanAccessory,
@@ -95,9 +93,6 @@ class TuyaLan {
                 device.ip = ('' + (device.ip || '')).trim();
             } catch(ex) {}
 
-            //if (!/^[0-9a-f]+$/i.test(device.id)) return this.log.error('%s, id for %s, is not a valid id.', device.id, device.name || 'unnamed device');
-            if (!/^[0-9a-f]+$/i.test(device.key)) return this.log.error('%s, key for %s (%s), is not a valid key.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
-            if (!{16:1, 24:1, 32: 1}[device.key.length]) return this.log.error('%s, key for %s (%s), doesn\'t have the expected length.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
             if (!device.type) return this.log.error('%s (%s) doesn\'t have a type defined.', device.name || 'Unnamed device', device.id);
             if (!CLASS_DEF[device.type.toLowerCase()]) return this.log.error('%s (%s) doesn\'t have a valid type defined.', device.name || 'Unnamed device', device.id);
 
