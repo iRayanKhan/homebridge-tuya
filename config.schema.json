@@ -24,7 +24,7 @@
                       "null"
                     ]
                   },
-                  { 
+                  {
                     "title": "Smart Plug / Barely Smart Power Strip",
                     "enum": [
                       "Outlet"
@@ -101,6 +101,18 @@
                     "enum": [
                       "RGBTWOutlet"
                     ]
+                  },
+                  {
+                    "title": "Simple Fan",
+                    "enum": [
+                      "SimpleFan"
+                    ]
+                  },
+                  {
+                    "title": "Simple Fan Light",
+                    "enum": [
+                      "SimpleFanLight"
+                    ]
                   }
                 ]
               },
@@ -114,7 +126,7 @@
               },
               "id": {
                 "type": "string",
-                "title": "Tuya ID", 
+                "title": "Tuya ID",
                 "description": "If you don't have the Tuya ID or Key, follow the steps found on the <a href='https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Setup-Instructions' target='_blank'>Setup Instructions</a> page.",
                 "required": true,
                 "condition": {
