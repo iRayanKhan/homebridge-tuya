@@ -144,7 +144,7 @@
               "ip": {
                 "title": "IP Address",
                 "type": "string",
-                "required": true,
+                "required": false,
                 "condition": {
                   "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
                 }
@@ -394,7 +394,6 @@
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
                 }
               },
-
               "dpChildLock": {
                 "type": "integer",
                 "placeholder": "6",
