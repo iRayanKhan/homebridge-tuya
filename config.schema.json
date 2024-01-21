@@ -1,5 +1,5 @@
   {
-    "pluginAlias": "Tuya",
+    "pluginAlias": "TuyaLan",
     "pluginType": "platform",
     "singular": true,
     "headerDisplay": "<p align='center'><img height='60px' src='https://user-images.githubusercontent.com/3979615/78354049-dc7ff780-75f6-11ea-8026-2f8bf81d8331.png'></p>\n\nBefore using the Tuya plugin you need to discover your devices by following [these instructions](https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Setup-Instructions).\n\n",
@@ -106,6 +106,12 @@
                     "title": "Smart Plug w/ White and Color Lights",
                     "enum": [
                       "RGBTWOutlet"
+                    ]
+                  },
+                  {
+                    "title": "Switch",
+                    "enum": [
+                      "Switch"
                     ]
                   }
                 ]
@@ -466,6 +472,21 @@
                 "placeholder": 1,
                 "condition": {
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "SwitchCount": {
+                "type": "integer",
+                "description": "Manually overrides automatically detected switch count. Use only if it wasn't detected right.",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Switch'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "BacklightId": {
+                "type": "integer",
+                "description": "Manually overrides backlightId. Default is 16, but some switches may have it different.",
+                "placeholder": 16,
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Switch'].includes(model.devices[arrayIndices].type);"
                 }
               }
             }
