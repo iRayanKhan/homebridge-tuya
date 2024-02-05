@@ -1,5 +1,5 @@
   {
-    "pluginAlias": "Tuya",
+    "pluginAlias": "TuyaLan",
     "pluginType": "platform",
     "singular": true,
     "headerDisplay": "<p align='center'><img height='60px' src='https://user-images.githubusercontent.com/3979615/78354049-dc7ff780-75f6-11ea-8026-2f8bf81d8331.png'></p>\n\nBefore using the Tuya plugin you need to discover your devices by following [these instructions](https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Setup-Instructions).\n\n",
@@ -24,7 +24,7 @@
                       "null"
                     ]
                   },
-                  { 
+                  {
                     "title": "Smart Plug / Barely Smart Power Strip",
                     "enum": [
                       "Outlet"
@@ -97,15 +97,21 @@
                     ]
                   },
                   {
-                    "title": "Simple Blinds2",
-                    "enum": [
-                      "Simple Blinds2"
-                    ]
-                  },
-                  {
                     "title": "Smart Plug w/ White and Color Lights",
                     "enum": [
                       "RGBTWOutlet"
+                    ]
+                  },
+                  {
+                    "title": "Simple Fan",
+                    "enum": [
+                      "Fan"
+                    ]
+                  },
+                  {
+                    "title": "Simple Fan Light",
+                    "enum": [
+                      "FanLight"
                     ]
                   }
                 ]
@@ -120,7 +126,7 @@
               },
               "id": {
                 "type": "string",
-                "title": "Tuya ID", 
+                "title": "Tuya ID",
                 "description": "If you don't have the Tuya ID or Key, follow the steps found on the <a href='https://github.com/AMoo-Miki/homebridge-tuya-lan/wiki/Setup-Instructions' target='_blank'>Setup Instructions</a> page.",
                 "required": true,
                 "condition": {
@@ -131,6 +137,14 @@
                 "title": "Tuya Key",
                 "type": "string",
                 "required": true,
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
+                }
+              },
+              "ip": {
+                "title": "IP Address",
+                "type": "string",
+                "required": false,
                 "condition": {
                   "functionBody": "return model.devices && model.devices[arrayIndices].type !== 'null';"
                 }
@@ -364,6 +378,20 @@
                 "placeholder": "4",
                 "condition": {
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "maxSpeed": {
+                "type": "integer",
+                "placeholder": "3",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "fanDefaultSpeed": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpChildLock": {
