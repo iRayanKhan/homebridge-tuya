@@ -67,6 +67,12 @@
                     ]
                   },
                   {
+                    "title": "Air Purifier",
+                    "enum": [
+                      "AirPurifier"
+                    ]
+                  },
+                  {
                     "title": "Heat Convector",
                     "enum": [
                       "Convector"
