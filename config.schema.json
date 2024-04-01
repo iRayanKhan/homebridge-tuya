@@ -113,7 +113,14 @@
                     "enum": [
                       "FanLight"
                     ]
-                  }
+                  },
+                  {
+                    "title": "Air Purifier",
+                    "enum": [
+                      "AirPurifier"
+                    ]
+                  },
+
                 ]
               },
               "name": {
