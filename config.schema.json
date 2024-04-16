@@ -379,11 +379,25 @@
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
                 }
               },
+              "dpLightOn": {
+                "type": "integer",
+                "placeholder": "9",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpFanOn": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
+                }
+              },
               "dpRotationSpeed": {
                 "type": "integer",
                 "placeholder": "4",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "maxSpeed": {
@@ -396,6 +410,13 @@
               "fanDefaultSpeed": {
                 "type": "integer",
                 "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "useStrings": {
+                "type": "boolean",
+                "placeholder": true,
                 "condition": {
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
                 }
