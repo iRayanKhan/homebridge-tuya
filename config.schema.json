@@ -113,6 +113,12 @@
                     "enum": [
                       "FanLight"
                     ]
+                  },
+                  {
+                    "title": "Air Purifier",
+                    "enum": [
+                      "AirPurifier"
+                    ]
                   }
                 ]
               },
@@ -494,6 +500,13 @@
                 "placeholder": 1,
                 "condition": {
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpBlindType": {
+                "type": "integer",
+                "placeholder": 1,
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds'].includes(model.devices[arrayIndices].type);"
                 }
               }
             }
