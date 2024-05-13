@@ -454,9 +454,9 @@
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
                 }
               },
-              "targetTemperatureDivisor": {
+              "temperatureOffset": {
                 "type": "integer",
-                "placeholder": "1",
+                "placeholder": "0",
                 "condition": {
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
                 }
