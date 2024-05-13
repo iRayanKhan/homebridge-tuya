@@ -454,6 +454,13 @@
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
                 }
               },
+              "temperatureOffset": {
+                "type": "integer",
+                "placeholder": "0",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleHeater'].includes(model.devices[arrayIndices].type);"
+                }
+              },
               "dpAction": {
                 "type": "integer",
                 "placeholder": "1",
