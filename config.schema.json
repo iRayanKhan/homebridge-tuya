@@ -119,6 +119,12 @@
                     "enum": [
                       "AirPurifier"
                     ]
+                  },
+                  {
+                    "title": "Star Projector",
+                    "enum": [
+                      "StarProjector"
+                    ]
                   }
                 ]
               },
@@ -222,7 +228,7 @@
                 "type": "integer",
                 "placeholder": "2",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'SimpleDimmer','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'SimpleDimmer','RGBTWOutlet', 'StarProjector'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpColorTemperature": {
@@ -249,28 +255,28 @@
                 "type": "integer",
                 "placeholder": "2",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet', 'StarProjector'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpColor": {
                 "type": "integer",
                 "placeholder": "5",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet', 'StarProjector'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "colorFunction": {
                 "type": "string",
                 "placeholder": "HEXHSB",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet', 'StarProjector'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "scaleBrightness": {
                 "type": "integer",
                 "placeholder": "255",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet', 'StarProjector'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "scaleWhiteColor": {
@@ -520,7 +526,7 @@
                 "type": "integer",
                 "placeholder": 1,
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWOutlet', 'StarProjector'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpBlindType": {
@@ -528,6 +534,13 @@
                 "placeholder": 1,
                 "condition": {
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpMotor": {
+                "type": "integer",
+                "placeholder": 1,
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['StarProjector'].includes(model.devices[arrayIndices].type);"
                 }
               }
             }
