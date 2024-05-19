@@ -7,7 +7,7 @@
     "schema": {
       "type": "object",
       "properties": {
-        "discoveryTimeout": {
+        "discoverTimeout": {
           "title": "Device IP auto-discovery timeout",
           "type": "integer",
           "minimum": 0,
