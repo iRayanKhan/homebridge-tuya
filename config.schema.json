@@ -49,6 +49,12 @@
                     ]
                   },
                   {
+                    "title": "Color-only Light Bulb",
+                    "enum": [
+                      "RGBLight"
+                    ]
+                  },
+                  {
                     "title": "Smart Power Strip",
                     "enum": [
                       "MultiOutlet"
@@ -215,14 +221,14 @@
                 "type": "integer",
                 "placeholder": "1",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'TWLight', 'RGBTWLight', 'SimpleDimmer','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Outlet', 'TWLight','RGBLight','RGBTWLight', 'SimpleDimmer','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpBrightness": {
                 "type": "integer",
                 "placeholder": "2",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight', 'SimpleDimmer','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['TWLight', 'RGBTWLight','SimpleDimmer','RGBTWOutlet','RGBLight'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpColorTemperature": {
@@ -249,28 +255,28 @@
                 "type": "integer",
                 "placeholder": "2",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBLight','RGBTWLight', 'RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "dpColor": {
                 "type": "integer",
                 "placeholder": "5",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBLight','RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "colorFunction": {
                 "type": "string",
                 "placeholder": "HEXHSB",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBLight','RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "scaleBrightness": {
                 "type": "integer",
                 "placeholder": "255",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['RGBLight','RGBTWLight','RGBTWOutlet'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "scaleWhiteColor": {
