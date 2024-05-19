@@ -25,6 +25,7 @@ const OilDiffuserAccessory = require('./lib/OilDiffuserAccessory');
 
 const PLUGIN_NAME = 'homebridge-tuya';
 const PLATFORM_NAME = 'TuyaLan';
+const DEFAULT_DISCOVER_TIMEOUT = 60000;
 
 const CLASS_DEF = {
     outlet: OutletAccessory,
@@ -152,7 +153,7 @@ class TuyaLan {
                     this.log.warn('Failed to discover %s (%s) in time but will keep looking.', devices[deviceId].name, deviceId);
                 }
             });
-        }, 60000);
+        }, this.config.discoverTimeout ?? DEFAULT_DISCOVER_TIMEOUT);
     }
 
     registerPlatformAccessories(platformAccessories) {

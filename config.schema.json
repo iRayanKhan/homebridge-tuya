@@ -7,6 +7,14 @@
     "schema": {
       "type": "object",
       "properties": {
+        "discoverTimeout": {
+          "title": "Device IP auto-discovery timeout",
+          "type": "integer",
+          "minimum": 0,
+          "placeholder": "Timeout (millisecond) for device IP address discovery",
+          "default": 60000,
+          "required": false
+        },
         "devices": {
           "type": "array",
           "orderable": false,

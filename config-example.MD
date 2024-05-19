@@ -15,6 +15,7 @@ The configuration parameters to enable your devices would need to be added to `p
         /* The block you need to enable this plugin */
         {
             "platform": "TuyaLan",
+            "discoverTimeout": 60000,
             "devices": [
                 /* The block you need for each device */
                 {
@@ -33,7 +34,7 @@ The configuration parameters to enable your devices would need to be added to `p
     ...
 }
 ```
-#### Parameters
+#### Device parameters
 * `name` (required) is anything you'd like to use to identify this device. You can always change the name from within the Home app.
 * `type` (required) is a case-insensitive identifier that lets the plugin know how to handle your device. Find your device `type` on the [Supported Device Type List](https://github.com/iRayanKhan/homebridge-tuya/wiki/Supported-Device-Types) page.
 * `manufacturer` and `model` are anything you like; the purpose of them is to help you identify the device.
@@ -41,3 +42,6 @@ The configuration parameters to enable your devices would need to be added to `p
 * `ip` needs to be added **_only_** if you face discovery issues. See [Common Problems](https://github.com/iRayanKhan/homebridge-tuya/wiki/Common-Problems) for more details.   
 
 > To find out which `id` belongs to which device, open the Tuya Smart app and check the `Device Information` by tapping the configuration icon of your devices; it is almost always a tiny icon on the top-right.
+
+#### Other parameters
+* `discoverTimeout` (optional) is the time period (millisecond) the plugin should spend for device auto-discovery. If unspecified, the default value is 60000.
