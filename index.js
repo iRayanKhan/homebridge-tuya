@@ -16,12 +16,14 @@ const GarageDoorAccessory = require('./lib/GarageDoorAccessory');
 const SimpleDimmerAccessory = require('./lib/SimpleDimmerAccessory');
 const SimpleDimmer2Accessory = require('./lib/SimpleDimmer2Accessory');
 const SimpleBlindsAccessory = require('./lib/SimpleBlindsAccessory');
+const SimpleBlinds2Accessory = require('./lib/SimpleBlinds2Accessory');
 const SimpleHeaterAccessory = require('./lib/SimpleHeaterAccessory');
 const SimpleFanAccessory = require('./lib/SimpleFanAccessory');
 const SimpleFanLightAccessory = require('./lib/SimpleFanLightAccessory');
 const SwitchAccessory = require('./lib/SwitchAccessory');
 const ValveAccessory = require('./lib/ValveAccessory');
 const OilDiffuserAccessory = require('./lib/OilDiffuserAccessory');
+const DoorbellAccessory = require('./lib/DoorbellAccessory');
 
 const PLUGIN_NAME = 'homebridge-tuya';
 const PLATFORM_NAME = 'TuyaLan';
@@ -42,12 +44,14 @@ const CLASS_DEF = {
     simpledimmer: SimpleDimmerAccessory,
     simpledimmer2: SimpleDimmer2Accessory,
     simpleblinds: SimpleBlindsAccessory,
+    simpleblinds2: SimpleBlinds2Accessory,
     simpleheater: SimpleHeaterAccessory,
     switch: SwitchAccessory,
     fan: SimpleFanAccessory,
     fanlight: SimpleFanLightAccessory,
     watervalve: ValveAccessory,
-    oildiffuser: OilDiffuserAccessory
+    oildiffuser: OilDiffuserAccessory,
+    doorbell: DoorbellAccessory
 };
 
 let Characteristic, PlatformAccessory, Service, Categories, AdaptiveLightingController, UUID;

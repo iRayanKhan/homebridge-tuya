@@ -97,6 +97,12 @@
                     ]
                   },
                   {
+                    "title": "Simple Blinds 2",
+                    "enum": [
+                      "SimpleBlinds2"
+                    ]
+                  },
+                  {
                     "title": "Smart Plug w/ White and Color Lights",
                     "enum": [
                       "RGBTWOutlet"
@@ -379,11 +385,25 @@
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'SimpleHeater'].includes(model.devices[arrayIndices].type);"
                 }
               },
+              "dpLightOn": {
+                "type": "integer",
+                "placeholder": "9",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpFanOn": {
+                "type": "integer",
+                "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
+                }
+              },
               "dpRotationSpeed": {
                 "type": "integer",
                 "placeholder": "4",
                 "condition": {
-                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector'].includes(model.devices[arrayIndices].type);"
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Convector', 'Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
                 }
               },
               "maxSpeed": {
@@ -396,6 +416,13 @@
               "fanDefaultSpeed": {
                 "type": "integer",
                 "placeholder": "1",
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "useStrings": {
+                "type": "boolean",
+                "placeholder": true,
                 "condition": {
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['Fan', 'FanLight'].includes(model.devices[arrayIndices].type);"
                 }
@@ -507,6 +534,20 @@
                 "placeholder": 1,
                 "condition": {
                   "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpControl": {
+                "type": "integer",
+                "placeholder": 1,
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds2'].includes(model.devices[arrayIndices].type);"
+                }
+              },
+              "dpPosition": {
+                "type": "integer",
+                "placeholder": 2,
+                "condition": {
+                  "functionBody": "return model.devices && model.devices[arrayIndices] && ['SimpleBlinds2'].includes(model.devices[arrayIndices].type);"
                 }
               }
             }
